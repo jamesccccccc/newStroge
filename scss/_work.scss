@@ -1,0 +1,17 @@
+.form-check-other input{
+    border-top:none;
+    border-left:none;
+    border-right:none;
+}
+.form-check-other input:focus{
+    outline:none;
+    border-color:#6495ED;
+}
+.select-btn{
+    font-weight: bold;
+    padding: 10px 50px;
+    border-radius: 5px;
+    border: none;
+    background-color:#FF7F50;
+    color:#fff;
+}

@@ -1,0 +1,42 @@
+
+.btn{
+    background: radial-gradient(108.82% 705.4% at -5.88% 0%, #FF5119 0%, #FFA113 100%);
+}
+.btn:focus{
+    border-color:radial-gradient(108.82% 705.4% at -5.88% 0%, #FF5119 0%, #FFA113 100%); ;
+    box-shadow: none;
+}
+.btn-hover:hover{
+    color:#FF5119;
+}
+.btn-weigth{
+    padding: 5px 100px;
+
+} 
+i.fa-search{
+   cursor: pointer;
+   transform: translateY(69%);
+   position: absolute;
+   color:#B3B3B3;
+   z-index: 50;
+}
+.form-control:focus{
+    border-color: #fff;
+    box-shadow: none;
+}
+.storageImg{
+    width: 437px;
+    height: 294px;
+    object-fit: cover;
+}
+.userComment{
+    background-color:rgba(0,0,0,0.05);
+}
+.copy{
+    color:#ccc;
+    font-weight:bold;
+    font-size:8px;
+    
+}
+
+

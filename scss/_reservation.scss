@@ -1,0 +1,110 @@
+.order-content{
+    background: linear-gradient(#FF7F50,#FFF);
+    padding: 100px;
+}
+.order{
+    padding:20px;
+    width: 600px;
+    border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+    .order{
+       width:300px;
+    }
+  }
+.box{
+    text-align: end;
+}
+.Previous-Btn{
+    font-weight: bold;
+    color:#fff;
+    border:none;
+    padding:5px 60px;
+    background:#FF5119;
+    border-radius: 5px;
+}
+.cancel{
+    font-weight: bold;
+    border:none;
+    padding:5px 60px;
+    background:#FF5119;
+    border-radius: 5px;
+}
+.Next-Btn{
+    font-weight: bold;
+    color:#fff;
+    border:none;
+    padding:5px 60px;
+    background:#FF5119;
+    border-radius: 5px;
+}
+.btn-box:hover{
+    background-color: #1E90FF;
+}
+.progressbar{
+   display: flex;
+   justify-content: space-between;
+   position: relative;
+   margin-bottom: 50px;
+}
+.progressbar::before,
+.progress{
+      content:"";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 4px;
+      width: 100%;
+      background-color:#dcdcdc;
+      z-index: 1;
+      counter-reset:step;
+    
+}
+.progress{
+    transition: .5s;
+    background-color:#1E90FF;
+    width: 0%;
+}
+.progressbar-step{
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    background: #dcdcdc;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progressbar-step::before{
+    color:#FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    counter-increment: step;
+    content: counter(step);
+}
+.progressbar-step::after{
+    content:attr(data-name);
+    position: absolute;
+    top:calc(100% + 0.5rem);
+    font-size:0.5rem;
+}
+.progressbar-step-active{
+     background-color:#1E90FF;
+}
+.form-step.form-step-active{
+    display: block;
+}
+.form-step{
+    display: none;
+    animation: animate 0.6s;
+}
+@keyframes animate{ 
+    from{
+        transform: translateX(2em);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

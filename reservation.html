@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+HK:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>預約派車</title>
+</head>
+<body>
+    <div class="header">
+        <div class="navbar navbar-expand-lg">
+             <div class="container">
+              <span class="navbar-band m-0" id="logo">
+                <a href="afterlogin.html"><img class="logo" src="img/logo.png" alt="FUN"></a>
+              </span>
+              <nav class="navbar">
+                <div class="collapse navbar-collapse">
+              <ul class="navbar-nav   me-3 mb-lg-0">
+                <li><a href="afterlogin.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">首頁</a></li>
+                <li><a href="reservation.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">預約派車</a></li>
+                <li><a href="#" class="nav-link px-md-3 fs-5 fw-bold btn-hover">訂單資訊</a></li>
+              </ul>
+             </div>
+            </nav>
+         </div>
+       </div>
+      </div>
+    <div class="order-content bg-primary2 d-flex flex-column align-items-center justify-content-center">
+            <form class="bg-white order">
+                <div class="title"><h1 class="fs-3 fw-bold mb-5">請輸入託運資訊</h1></div>
+                 <div class="progressbar">
+                    <div class="progress" id="progress"></div>
+                     <div class="progressbar-step progressbar-step-active" data-name="客戶資料"></div>
+                     <div class="progressbar-step" data-name="收件人資料"></div>
+                     <div class="progressbar-step" data-name="預約派車"></div>
+                 </div>
+                 <div class="form-step form-step-active">
+                    <div class="mb-3 fw-bold">
+                        <label for="exampleInputCustomer" class="form-label">客戶名稱:</label>
+                        <input type="Customer" class="form-control" id="exampleInputCustomer" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3 fw-bold">
+                        <label for="exampleInputContactphone" class="form-label">連絡電話:</label>
+                        <input type="Contactphone" class="form-control" id="exampleInputContactphone">
+                      </div>
+                      <div class="mb-3 fw-bold">
+                          <label for="exampleInputMail" class="form-label">Email:</label>
+                          <input type="Mail" class="form-control" id="exampleInputMail">
+                      </div>
+                      <div class="mb-3 fw-bold">
+                          <label for="exampleInputKg" class="form-label">貨物重量</label>
+                          <input type="Kg" class="form-control" id="exampleInputKg" placeholder="KG">
+                      </div>
+                      <div class="mb-3 fw-bold">
+                          <label for="exampleInputitems" class="form-label">內裝物品</label>
+                          <input type="items" class="form-control" id="exampleInputitems">
+                      </div>
+                      <div class="mb-3 fw-bold d-flex flex-column">
+                          <label for="remark">備註欄:</label>
+                          <textarea id="remark" name="remark"
+                                    rows="5" cols="33">
+                          </textarea>
+                      </div>
+                      <div class="box d-flex justify-content-between">
+                          <button type="submit" class="cancel"><a class="link-white" href="consult.html">取消</a></button>
+                          <button type="submit" class="Next-Btn">下一步</button>
+                      </div>
+                 </div>
+                 <div class="form-step">
+                    <div class="mb-3 fw-bold">
+                        <h6 class="fw-bold text-danger">※預約儲位租用則無需填寫</h6>
+                        <label for="exampleInputrecipient" class="form-label">收件人名稱:</label>
+                        <input type="recipient" class="form-control" id="exampleInputrecipient" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3 fw-bold">
+                        <label for="exampleInputAddres">收件人地址:</label>
+                        <select id="exampleInputAddres" class="form-select" aria-label="Default select example">
+                            <option selected>市區</option>
+                            <option value="1">臺北市</option>
+                            <option value="2">新北市</option>
+                            <option value="3">桃園市</option>
+                            <option value="4">新竹市</option>
+                            <option value="5">臺中市</option>
+                            <option value="6">臺南市</option>
+                            <option value="7">高雄市</option>
+                            <option value="8">宜蘭縣</option>
+                            <option value="9">苗栗縣</option>
+                            <option value="10">彰化縣</option>
+                            <option value="11">南投縣</option>
+                            <option value="12">雲林縣</option>
+                            <option value="13">嘉義縣</option>
+                            <option value="12">屏東縣</option>
+                            <option value="13">花蓮縣</option>
+                            <option value="14">臺東縣</option>
+                            <option value="15">澎湖縣</option>
+                        </select>
+                        <input type="text" class="form-control mt-3" id="exampleInputAddres" placeholder="地址">
+                      </div>
+                      <div class="mb-3 fw-bold">
+                          <label for="exampleInputMymail" class="form-label">E-mail</label>
+                          <input type="Kg" class="form-control" id="exampleInputMymail">
+                      </div>
+                      <div class="box d-flex justify-content-between mb-5">
+                          <button type="submit" class="Previous-Btn">上一步</button>
+                          <button type="submit" class="Next-Btn">下一步</button>
+                      </div>
+                 </div>
+                 <div class="form-step">
+                    <div class="mb-3 fw-bold">
+                    <label  for="date">請輸入派車日期:</label>
+                            <input type="date" 
+                            id="start" name="trip-start"
+                            value="2022"
+                            min="2022" 
+                            max="2030">
+                    </div>
+                    <div class="mb-3 fw-bold">
+                        <label  for="date">請輸入派車時間:</label>
+                        <input type="time"> 
+                    </div>
+                    <div class="mb-3 fw-bold">
+                        <label for="exampleInputAddres">請輸入取貨地址:</label>
+                        <select id="exampleInputAddres" class="form-select" aria-label="Default select example">
+                            <option selected>市區</option>
+                            <option value="1">臺北市</option>
+                            <option value="2">新北市</option>
+                            <option value="3">桃園市</option>
+                            <option value="4">新竹市</option>
+                            <option value="5">臺中市</option>
+                            <option value="6">臺南市</option>
+                            <option value="7">高雄市</option>
+                            <option value="8">宜蘭縣</option>
+                            <option value="9">苗栗縣</option>
+                            <option value="10">彰化縣</option>
+                            <option value="11">南投縣</option>
+                            <option value="12">雲林縣</option>
+                            <option value="13">嘉義縣</option>
+                            <option value="12">屏東縣</option>
+                            <option value="13">花蓮縣</option>
+                            <option value="14">臺東縣</option>
+                            <option value="15">澎湖縣</option>
+                        </select>
+                        <input type="text" class="form-control mt-3" id="exampleInputAddres" placeholder="地址">
+                      </div>
+                      <div class="box d-flex justify-content-between">
+                          <button type="submit" class="Previous-Btn">上一步</button>
+                          <button type="submit" class="Next-Btn">完成</button>
+                      </div>
+                 </div>
+            </form>
+           
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+   <script src="js/reservation.js"></script>
+</body>
+</html>

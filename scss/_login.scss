@@ -1,0 +1,38 @@
+.wrap {
+    height: 100vh;
+    background-image: url(../img/login.jpg);
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+  }
+.user-box{
+    border-radius: 10px;
+    padding:80px 150px;
+    margin-bottom: 20px;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+}
+.footer-mt{
+  margin-top: 100px;
+}
+@media screen and (max-width: 1240px) {
+    .user-box{
+        margin-top:20px;
+        padding:40px 50px;
+    }
+  }
+i.fa-solid.fa-user{
+    color:#fff;
+    margin-bottom:20px;
+    text-align: center;
+    line-height: 2;
+    background-color: rgba(0, 0, 0, 0.359);
+    border-radius:50%;
+    width: 100px;
+    height: 100px;
+    font-size: 45px;     
+}
