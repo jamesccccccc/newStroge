@@ -18,10 +18,12 @@
             </span>
             <nav class="navbar">
               <div class="collapse navbar-collapse">
-            <ul class="navbar-nav   me-3 mb-lg-0">
+            <ul class="navbar-nav   me-3 mb-lg-0  align-items-center">
               <li><a href="afterlogin.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">首頁</a></li>
               <li><a href="consult.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">預約派車</a></li>
               <li><a href="#" class="nav-link px-md-3 fs-5 fw-bold btn-hover">訂單資訊</a></li>
+              <li><a href="#" class="logout fw-bold nav-link btn-hover  ms-2">登出</a></li>
+              <li class="userHead ms-3"></li>
             </ul>
            </div>
           </nav>
@@ -119,25 +121,25 @@
     <h3 class="fw-bold">感謝您的使用,希望您能夠提供給我們寶貴的意見</h2>
     </div>
     <div class="py-5 ">
-<div class="d-flex justify-content-center row m-0 ">
+    <div class="d-flex justify-content-center row m-0 ">
    <div class="col-md-8 ">
        <div class="bg-white p-2 rounded border ">
            <h4 class="fw-bold border-grey1 border-bottom py-3 mb-3">評論</h4>
              <ul class="d-flex flex-column list-unstyled px-3">
                 <li class="d-flex my-3"> 
-                   <img class="rounded-pill"  src="https://ui-avatars.com/api/?name=jaems+chen" width="32px" height="32px">
+                  <img class="rounded-pill" src="https://ui-avatars.com/api/?name=paul&background=random&color=fff" width="32px" height="32px" alt="">
                      <div class="d-flex flex-column jsutify-content-start ml-2">
                          <span class="d-block fw-bold  fs-6 ms-3 ">服務效率很好,送貨司機人很親切 </span>
                      </div>
                </li>
                <li class="d-flex my-3"> 
-                 <img class="rounded-pill"  src="https://ui-avatars.com/api/?name=judy+wu" width="32px" height="32px">
+                <img class="rounded-pill" src="https://ui-avatars.com/api/?name=paul&background=random&color=fff" width="32px" height="32px" alt="">
                    <div class="d-flex flex-column jsutify-content-start ml-2">
                        <span class="d-block fw-bold  fs-6 ms-3 ">這個平台無敵的吧?什麼需求都能替我辦到!! </span>
                    </div>
              </li>  
              <li class="d-flex my-3"> 
-               <img class="rounded-pill"  src="https://ui-avatars.com/api/?name=Andy+lu" width="32px" height="32px">
+              <img class="rounded-pill" src="https://ui-avatars.com/api/?name=paul&background=random&color=fff" width="32px" height="32px" alt="">
                  <div class="d-flex flex-column jsutify-content-start ml-2">
                      <span class="d-block fw-bold  fs-6 ms-3 ">服務效率很好,送貨司機人很親切 </span>
                  </div>
@@ -148,7 +150,7 @@
          <button type="button" class="btn text-white btn-weigth">選寫評論</button>
      </div>
    </div>
-</div>
+    </div>
     </div> 
     <div class="footer bg-grey3 py-5 d-flex flex-column align-items-center  ">
 <div class="d-lg-flex  border-bottom border-grey1 py-3">
@@ -189,11 +191,30 @@
  </div>
  
     </div>
+    <script src="js/config.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="js/swiper.js"></script>
     <script src="js/all.js"></script>
+    <script>
+       //編輯使用者圖像
+       let userHead=document.querySelector('.navbar-nav>.userHead');
+       function addUser(){
+          let str=''
+          str+=`
+          <a href="#"><img class="rounded-pill"  src="https://ui-avatars.com/api/?name=${localStorage.getItem('myname')}&background=random&color=fff" width="32px" height="32px">
+          </a>`
+          userHead.innerHTML=str;
+       }
+       addUser();
+       //登出
+       let logout=document.querySelector('.logout');
+       logout.addEventListener('click',function(e){
+          window.location.replace('http://127.0.0.1:5501/index.html');
+       })
+    </script>
 </body>
 </html>

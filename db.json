@@ -1,5 +1,22 @@
 {
-  "users":[
-    
+  "users": [
+    {
+      "email": "gyt455398@gmail.com",
+      "password": "$2a$10$zXEF1CstTxhZ.NGJMXzNyuzKDur5uF3HWSzmLZ2zbJR3sHhlIX4eO",
+      "myname": "james",
+      "id": 1
+    },
+    {
+      "email": "gyt4637337@gmail.com",
+      "password": "$2a$10$W/rOFc0lgyYRCwFRCIhEwe30Yx2o54otupb0afRxIeAvNj/ibXBJe",
+      "myname": "zuse",
+      "id": 2
+    },
+    {
+      "email": "asd455398@gmail.com",
+      "password": "$2a$10$NMa.shUe1x8yuustwhezR.sOhfs/EtIzio7hfqsMVuZyWEzaFP0KC",
+      "myname": "pony",
+      "id": 3
+    }
   ]
 }

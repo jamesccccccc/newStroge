@@ -35,12 +35,13 @@
         <form>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">電子郵件</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="login-mail form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text"></div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">密碼</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input  autocomplete="off" type="password" class="login-password form-control" id="exampleInputPassword1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text"></div>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -48,7 +49,7 @@
             
           </div>
           <div class="send d-flex justify-content-between">
-            <button type="submit" class="btn text-white ">送出</button>
+            <button type="button" class="login-btn btn text-white ">送出</button>
             <a href="register.html" class="register btn text-white ">註冊帳號</a>
           </div>
         </form>
@@ -94,8 +95,53 @@
        
     </div>
     </div>
+    <script src="js/config.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    <script>
+        let login=document.querySelector('.login-btn');
+        login.addEventListener('click',function(e){
+            let loginMail=document.querySelector(".login-mail").value
+            let loginPassword=document.querySelector(".login-password").value
+            if(loginMail===""||loginPassword===""){
+                alert('請輸入會員資訊');
+                return
+            }
+            searchName(loginMail);
+            memberLogin(loginMail,loginPassword);
+        })
+        function memberLogin(loginMail,loginPassword){
+            axios.post(`${_url}/login`,{
+                "email":loginMail,
+                "password":loginPassword
+            })
+            .then(response=>{
+                  console.log(response)
+                  localStorage.setItem('token',response.data.accessToken)
+                  window.location.replace('http://127.0.0.1:5501/afterlogin.html');
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+        }
+        let nameData=[]
+        function searchName(loginMail){
+            axios.get(`${_url}/users`)
+            .then(res=>{
+               nameData=res.data
+               nameData.forEach(item=>{
+                  if(item.email==loginMail){
+                      localStorage.setItem('myname',item.myname);
+                  }
+               })
+            })
+            .catch(err=>{
+              console.log(err)
+            })
+        }
+        searchName();
+    </script> 
 </body>
 </html>
