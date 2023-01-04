@@ -38,5 +38,19 @@ i.fa-search{
     font-size:8px;
     
 }
-
+.comment-star .star{
+    color:#FFA113;
+}
+.afford-star{
+    user-select: none;
+}
+.afford-star .star{
+    background-color: unset;
+    border: none;
+    color:#FFA113;
+    font-size: 2rem;
+}
+textarea {
+    resize: none;
+}
 

@@ -11183,6 +11183,28 @@ i.fa-search {
   font-size: 8px;
 }
 
+.comment-star .star {
+  color: #FFA113;
+}
+
+.afford-star {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.afford-star .star {
+  background-color: unset;
+  border: none;
+  color: #FFA113;
+  font-size: 2rem;
+}
+
+textarea {
+  resize: none;
+}
+
 .swiper {
   max-width: 600px;
   height: 600px;
@@ -11297,7 +11319,6 @@ i.fa-regular.fa-address-card {
   line-height: 2;
   width: 100px;
   height: 100px;
-  font-size: 45px;
 }
 
 .order-content {

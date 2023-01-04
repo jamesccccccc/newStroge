@@ -104,6 +104,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script>
+         //註冊功能
          let registerBtn=document.querySelector('.register');
          registerBtn.addEventListener('click',function(e){
               let myName=document.querySelector('.form-name').value;
@@ -125,11 +126,10 @@
                  "password":myPassword
               })
               .then(response=>{
-                console.log(response);
-                window.location.replace('http://127.0.0.1:5501/login.html')
+                  window.location.replace('http://127.0.0.1:5501/login.html');
               })
               .catch(error=>{
-                console.log(error)
+                console.log(error);
               })
          }
     </script>
