@@ -11205,6 +11205,22 @@ textarea {
   resize: none;
 }
 
+.menu {
+  z-index: 3;
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  top: 110%;
+}
+
+.check-Menu:hover .menu {
+  display: inline-block;
+}
+
+.introduce {
+  width: 400px;
+}
+
 .swiper {
   max-width: 600px;
   height: 600px;
@@ -11367,6 +11383,15 @@ i.fa-regular.fa-address-card {
   border-radius: 5px;
 }
 
+.sendout-Btn {
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  padding: 5px 60px;
+  background: #FF5119;
+  border-radius: 5px;
+}
+
 .btn-box:hover {
   background-color: #1E90FF;
 }
@@ -11521,4 +11546,8 @@ i.fa-regular.fa-address-card {
   border: none;
   background-color: #FF7F50;
   color: #fff;
+}
+
+.order {
+  background-color: #fddfcd;
 }/*# sourceMappingURL=all.css.map */

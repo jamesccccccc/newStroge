@@ -1,4 +1,7 @@
 let _url=`http://localhost:3000`;
+let token=localStorage.getItem('token');
+let id=localStorage.getItem('userId');
+let userName=localStorage.getItem('myname');
 //編輯使用者圖像
 let userHead=document.querySelector('.navbar-nav>.userHead');
 function addUser(){

@@ -9,6 +9,9 @@ nextBtn.forEach(btn=>{
     btn.addEventListener('click',function(e){
         e.preventDefault();
         Num++;
+        if(Num>2){
+            return
+        }
         updatenextBtn();
         progressbarStepbar();
     })
@@ -33,10 +36,10 @@ previousBtns.forEach(btn=>{
 function updateprevious(){
     formSteps.forEach(item=>{
         if(item.classList.contains("form-step-active")){
-            item.classList.remove("form-step-active")
+            item.classList.remove("form-step-active");
         }
     })
-    formSteps[Num].classList.add('form-step-active')
+    formSteps[Num].classList.add('form-step-active');
  }
  //進度條
  function progressbarStepbar(){

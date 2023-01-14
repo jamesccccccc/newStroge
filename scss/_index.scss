@@ -53,4 +53,18 @@ i.fa-search{
 textarea {
     resize: none;
 }
+.menu{
+    z-index:3;
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    top: 110%;
+}
+.check-Menu:hover .menu{
+    display: inline-block;
+}
+.introduce{
+    width: 400px;
+}
+
 
