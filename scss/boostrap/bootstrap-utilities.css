@@ -17,6 +17,13 @@
   color: #ff7447;
 }
 
+.link-primary2 {
+  color: #FF7F50;
+}
+.link-primary2:hover, .link-primary2:focus {
+  color: #ff9973;
+}
+
 .link-blue {
   color: #1E90FF;
 }
@@ -599,6 +606,10 @@
 
 .border-primary {
   border-color: #FF5119 !important;
+}
+
+.border-primary2 {
+  border-color: #FF7F50 !important;
 }
 
 .border-blue {
@@ -1518,6 +1529,10 @@
   color: #FF5119 !important;
 }
 
+.text-primary2 {
+  color: #FF7F50 !important;
+}
+
 .text-blue {
   color: #1E90FF !important;
 }
@@ -1596,6 +1611,10 @@
 
 .bg-primary {
   background-color: #FF5119 !important;
+}
+
+.bg-primary2 {
+  background-color: #FF7F50 !important;
 }
 
 .bg-blue {

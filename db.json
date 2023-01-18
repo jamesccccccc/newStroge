@@ -63,63 +63,6 @@
       "id": 7
     }
   ],
-  "shops": [
-    {
-      "userId": "1",
-      "demand": "出貨",
-      "customerName": "陳以琨",
-      "customerMail": "gyt455398@gmail.com",
-      "customerWeight": "50KG",
-      "customerItems": "3C零件",
-      "customerRemark": "請司機早上來                ",
-      "recipientName": "王小名",
-      "recipientPhone": "0982709433",
-      "recipientMail": "gyt455398@gmail.com",
-      "deliveryDate": "2023-01-18",
-      "deliveryTime": "21:22",
-      "pickupArea": "臺北市",
-      "pickupAddres": "大安區",
-      "sendArea": "桃園市",
-      "sendAddres": "中壢區成功路",
-      "id": 1
-    },
-    {
-      "userId": "2",
-      "demand": "出貨",
-      "customerName": "james",
-      "customerMail": "zxc455398@gmail.com",
-      "customerWeight": "90",
-      "customerItems": "木頭商品",
-      "customerRemark": "無",
-      "recipientName": "judy",
-      "recipientPhone": "0970393225",
-      "recipientMail": "gyt455398@gmail.com",
-      "deliveryDate": "2023-01-10",
-      "deliveryTime": "23:19",
-      "pickupArea": "新竹市",
-      "pickupAddres": "香山區",
-      "sendArea": "臺北市",
-      "sendAddres": "內湖區",
-      "id": 2
-    },
-    {
-      "userId": "2",
-      "demand": "出貨",
-      "customerName": "陳以琨",
-      "customerMail": "gyt455398@gmail.com",
-      "customerWeight": "50KG",
-      "customerItems": "3C零件",
-      "customerRemark": "無                    ",
-      "recipientName": "judy",
-      "recipientPhone": "0970393225",
-      "recipientMail": "gyt455398@gmail.com",
-      "deliveryDate": "2023-01-09",
-      "deliveryTime": "02:25",
-      "pickupArea": "臺北市",
-      "pickupAddres": "大安區",
-      "sendArea": "桃園市",
-      "sendAddres": "中壢區",
-      "id": 3
-    }
-  ]
+  "shops": [],
+  "process": []
 }

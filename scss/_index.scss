@@ -66,5 +66,35 @@ textarea {
 .introduce{
     width: 400px;
 }
-
+input[type=checkbox]{
+    opacity: 0;
+}
+input[type=checkbox] + label{
+   display: block;
+}
+input[type=checkbox] + label:before{
+    content:"\2713";
+    border: 0.1em solid #ccc;
+    border-radius: 5px;
+    width: 22px;
+    height: 22px;
+    padding-left:5px;
+    display: inline-block;
+    vertical-align: middle;
+    color:transparent;
+   
+    
+}
+input[type=checkbox]:checked + label:before{
+    background-color:#FF5119;
+    border: none;
+    color:#fff;
+    transition: .4s;
+}
+.radio-item label{
+    padding:0 10px;
+}
+.radio-item input[type=checkbox]+label:before{
+    border-radius: 50%;
+}
 

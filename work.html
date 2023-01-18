@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="scss/all.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+HK:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>倉儲服務</title>
@@ -31,69 +31,192 @@
    </div>
   </div>
 <div class="order-content bg-primary2 d-flex flex-column align-items-center justify-content-center">
-       <div class="order-from bg-white rounded">
+       <div class="order-from bg-white rounded ps-6">
         <h1 class="fw-bold fs-3 py-5 px-5">請選擇你需要的服務</h1>
         <form class="pt-3 pb-5">
-              <div class="check-list d-flex fw-bold mb-5">
-                <div class="mb-3 form-check ">
-                  <input type="radio" class="check-item" id="inventory">
-                  <label class="form-check-label" for="inventory">盤點</label>
+          <h2 class="fw-bold fs-5 px-5 mb-3">請選擇加工服務</h2>
+              <div class="radio-list d-flex flex-column fw-bold mb-5 ps-5">
+                <div class="mb-3 radio-item ">
+                  <input type="checkbox" class="select-All"  name="radio" id="select-All" value="全部服務">
+                  <label for="select-All"><span class="mx-2">全選</span></label>
                 </div>
-                  <div class="mb-3 form-check ">
-                  <input type="radio" class="check-item" id="labeling">
-                  <label class="form-check-label" for="labeling">貼標</label>
+                <div class="mb-2 radio-item">
+                  <input type="checkbox" class="process" name="radio" id="check1" value="盤點">
+                  <label for="check1"><span class="mx-2">盤點</span></label>
                 </div>
-                <div class="mb-3 form-check ">
-                  <input type="radio" class="check-item" id="package">
-                  <label class="form-check-label" for="package">包貨</label>
+                <div class="mb-2 radio-item ">
+                  <input type="checkbox" class="process" name="radio" id="check2" value="貼標">
+                  <label for="check2"><span class="mx-2">貼標</span></label>
                 </div>
-                <div class="mb-3 form-check ">
-                  <input type="radio" class="check-item" id="picking">
-                  <label class="form-check-label" for="picking">揀貨 </label>
+                <div class="mb-2 radio-item ">
+                  <input type="checkbox" class="process" name="radio" id="check3" value="包貨">
+                  <label for="check3"><span class="mx-2">包貨</span></label>
                 </div>
-                <div class="mb-3 form-check ">
-                  <input type="radio" class="check-item" id="pack">
-                  <label class="form-check-label" for="pack">商品分裝</label>
+                <div class="mb-2 radio-item ">
+                  <input type="checkbox" class="process" name="radio" id="check4" value="揀貨">
+                  <label for="check4"><span class="mx-2">揀貨</span></label>
+                </div>
+                <div class="mb-2 radio-item ">
+                  <input type="checkbox" class="process" name="radio" id="check5" value="商品分裝">
+                  <label for="check5"><span class="mx-2">商品分裝</span></label>
                 </div>
               </div>
-              <div class="check-list d-flex flex-column fw-bold mb-5">
+              <div class="check-list d-flex flex-column  fw-bold mb-5">
                 <h2 class="fw-bold fs-5 px-5">您的客戶?</h2>
                 <div class="mb-3 form-check px-6">
-                  <input type="checkbox" class="check-item" id="B2B">
-                  <label class="form-check-label" for="B2B">B2B(給經銷商、廠商、團購) 量大出貨，同品項整箱</label>
+                  <input type="checkbox" class="commerce" id="B2B" value="B2B">
+                  <label class="form-check-label" for="B2B"><span class="px-2">B2B(給經銷商、廠商、團購) 量大出貨，同品項整箱</span></label>
                 </div>
                 <div class="mb-3 form-check px-6">
-                  <input type="checkbox" class="check-item" id="B2C">
-                  <label class="form-check-label" for="B2C">B2C(給客人) 每一單裡品項不同</label>
+                  <input type="checkbox" class="commerce" id="B2C" value="B2C">
+                  <label class="form-check-label" for="B2C"><span class="px-2">B2C(給客人) 每一單裡品項不同</span></label>
                 </div>
                 <div class="mb-3 form-check-other px-6">
                   <label class="form-check-label" for="other">其他:</label>
-                  <input type="text" class="check-item" id="other">
+                  <input type="text" class="" id="other">
                 </div>
               </div> 
               <h2 class="fs-5 fw-bold px-5">特殊需求或加工(請詳細提供)</h2>
               <div class="mb-3 form-check-other mb-6 px-5">
                   <label class="form-check-label" for="special"></label>
-                  <input type="text" size="50" class="check-item" id="special">
+                  <input type="text" size="50" class="check-item" id="special" value="">
               </div>
               <h3 class="fs-5 fw-bold px-5">請提供預計出貨的日期</h3>
               <div class="mb-3 form-check px-5">
-                <input type="date" class="" id="">
-                <label class="form-check-label" for=""></label>
-                <input type="time" class="" id="">
-                <label class="form-check-label" for=""></label>
+                <input type="date" class="shipDate" id="date">
+                <label class="form-check-label" for="date"></label>
+                <input type="time" class="shipTime" id="time">
+                <label class="form-check-label" for="time"></label>
               </div>
+              <div class="mb-3 fw-bold  px-5">
+                <label for="area">請輸入取貨地址:</label>
+                <select id="area" class="form-select" aria-label="Default select example">
+                    <option selected>市區</option>
+                    <option value="臺北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                </select>
+                <input type="text" class="pickupAddres form-control mt-3" id="addres" placeholder="地址">
+            </div>
         </form>
-        <div class="select d-flex justify-content-center pb-6">
-            <button type="button" class="ms-5 select-btn"><a class="link-white" href="consult.html">取消</a></button>
-            <button type="button" class="ms-5 select-btn"><a class="link-white" href="reservation.html">確認</a></button>
+        <div class="select d-flex justify-content-around  pb-6">
+            <button type="button" class="me-5 select-btn"><a class="link-white" href="consult.html">取消</a></button>
+            <button type="button" class="ms-5 select-btn send-Btn"><a class="link-white" href="#">確認</a></button>
         </div> 
        </div>
 </div>
     <script src="js/config.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
    <script src="js/reservation.js"></script>
+   <script>
+      const selectAll=document.getElementById('select-All');
+      const process=document.querySelectorAll('.process');
+      const send=document.querySelector('.send-Btn');
+      const commerce=document.querySelectorAll('.commerce');
+      let selectData=[];
+      let commerceData=[];
+      //全選
+       selectAll.addEventListener('click',e=>{
+        if(selectAll.checked == true){
+              const selectItem=document.getElementsByName('radio');
+              selectItem.forEach((item,i)=>{
+              if(i<selectItem.length){
+                  selectItem[i].checked=true;
+                  let seletctList=selectItem[i].value
+                  selectData.push(seletctList);
+                }
+             })  
+          }
+        if(selectAll.checked==false){
+              selectData.length=0;
+              const selectItem=document.getElementsByName('radio');
+              selectItem.forEach((item,i)=>{
+              if(i<selectItem.length){
+                  selectItem[i].checked=false;
+                }
+             })              
+        } 
+        }
+       );
+      //選擇服務
+      process.forEach(item=>{
+      item.addEventListener('click',e=>{
+      if(item.checked==true){
+           let choose=item.value;
+           selectData.push(choose);
+         }else{
+            selectData.length=0;
+          }
+        })
+      })     
+      //電子商務
+      commerce.forEach(item=>{
+         item.addEventListener('click',e=>{
+             if(item.checked==true){
+                let commerceList=item.value
+                commerceData.push(commerceList);
+             }else{
+                selectData.length=0;
+             }
+         })
+      })
+      //送出訂單
+      send.addEventListener('click',e=>{
+          const shipDate=document.getElementById('date').value;
+          const shipTime=document.getElementById('time').value;
+          const pickupArea=document.getElementById('area').value;
+          const pickupAddres=document.getElementById('addres').value;
+          let order={}
+          order.name=userName,
+          order.id=id,
+          order.demand="倉儲服務"
+          order.work=selectData;
+          order.commerce=commerceData;
+          order.date=shipDate,
+          order.time=shipTime,
+          order.area=pickupArea,
+          order.addres=pickupAddres,
+          console.log(order)
+          axios.post(`${_url}/600/process`,{
+             "name":order.name,
+             "userId":order.id,
+             "demand":order.demand,
+             "work":order.work,
+             "commerce":order.commerce,
+             "date":order.date,
+             "time":order.time,
+             "area":order.area,
+             "addres":order.addres,
+          },{
+            headers: {
+              'Content-Type':'application/json',
+              'Authorization': 'Bearer '+token  
+               }
+          })
+          .then(res=>{
+              console.log(res); 
+          })
+          .catch(err=>{
+
+          })
+      })
+   </script>
 </body>
 </html>

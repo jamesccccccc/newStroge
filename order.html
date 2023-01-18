@@ -55,9 +55,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script>
-        const order=document.querySelector('.order-list');
         //取得訂單內容
+        const order=document.querySelector('.order-list');
         let orderData=[]
+        //出貨
         axios.get(`${_url}/shops`)
         .then(res=>{
           orderData=res.data
@@ -73,7 +74,11 @@
                 <td>${item.demand}</td>
                 <td>${item.deliveryDate}</td>
                 <td>${item.deliveryTime}</td>
-                <td><a href="#" class="p-2 link-primary deleteBtn"><i class="fa-solid fa-trash-can"></i></a></td>
+                <td class="deletBtn">
+                  <a href="#" class="p-2 link-primary fs-5">
+                    <i class="fa-solid fa-trash-can"  data-id="${item.id}"></i>
+                  </a>
+                </td>
               </tr>
             `
             order.innerHTML+=str
@@ -84,16 +89,18 @@
         })
         //刪除按鈕
         order.addEventListener('click',e=>{
-          console.log(e.target.getAttribute('class'));
-          if(e.target.getAttribute('class')!=='fa-solid fa-trash-can'){
-              alert('你按錯了')
-              return;
-          }
-          axios.delete(`${_url}`)
-        })
-        axios.get(`${_url}/shops`)
-        .then(res=>{
-          console.log(res)
+           const orderId=e.target.getAttribute('data-id');
+           if(orderId===null){
+             alert('你點錯了');
+             return;
+           }
+           axios.delete(`${_url}/shops/${orderId}`)
+           .then(res=>{
+              alert('刪除成功');
+           })
+           .catch(err=>{
+              console.log(err);
+           })
         })
     </script>
 </body>
