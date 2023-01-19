@@ -58,6 +58,33 @@
         //取得訂單內容
         const order=document.querySelector('.order-list');
         let orderData=[]
+        //倉儲服務
+        axios.get(`${_url}/process`)
+        .then(res=>{
+           orderData=res.data
+           orderData.forEach(item=>{
+            console.log(item)
+            if(item.userId!==id){
+               return;
+              }
+              let str=''
+              str+=`
+              <tr>
+                <th scope="row"><input type="checkbox"></th>
+                <td>${item.customerName}</td>
+                <td>${item.demand}</td>
+                <td>${item.deliveryDate}</td>
+                <td>${item.deliveryDateTime}</td>
+                <td class="deletBtn">
+                  <a href="#" class="p-2 link-primary fs-5">
+                    <i class="fa-solid fa-trash-can"  data-id="${item.id}"></i>
+                  </a>
+                </td>
+              </tr>
+              `
+              order.innerHTML+=str
+           })
+        })
         //出貨
         axios.get(`${_url}/shops`)
         .then(res=>{
@@ -95,6 +122,20 @@
              return;
            }
            axios.delete(`${_url}/shops/${orderId}`)
+           .then(res=>{
+              alert('刪除成功');
+           })
+           .catch(err=>{
+              console.log(err);
+           })
+        })
+        order.addEventListener('click',e=>{
+           const orderId=e.target.getAttribute('data-id');
+           if(orderId===null){
+             alert('你點錯了');
+             return;
+           }
+           axios.delete(`${_url}/process/${orderId}`)
            .then(res=>{
               alert('刪除成功');
            })
