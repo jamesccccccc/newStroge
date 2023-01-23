@@ -111,7 +111,7 @@
                     <option value="澎湖縣">澎湖縣</option>
                 </select>
                 <input type="text" class="pickupAddres form-control mt-3" id="addres" placeholder="地址">
-            </div>
+              </div>
         </form>
         <div class="select d-flex justify-content-around  pb-6">
             <button type="button" class="me-5 select-btn"><a class="link-white" href="consult.html">取消</a></button>
@@ -193,7 +193,6 @@
           order.time=shipTime,
           order.area=pickupArea,
           order.addres=pickupAddres,
-
           axios.post(`${_url}/600/process`,{
              "customerName":order.name,
              "userId":order.id,
@@ -201,7 +200,7 @@
              "work":order.work,
              "commerce":order.commerce,
              "deliveryDate":order.date,
-             "deliveryDateTime":order.time,
+             "deliveryTime":order.time,
              "area":order.area,
              "addres":order.addres,
           },{

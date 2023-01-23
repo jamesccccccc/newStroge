@@ -33,7 +33,7 @@
     </div>
     <div class="container mt-5">
       <div class="title bg-grey2 text-white fw-bold py-3 fs-4 text-center">訂單資訊</div>
-        <table class="table">
+        <table class="table" id="demandTable">
             <thead>
               <tr>
                 <th scope="col">全選 <input type="checkbox"></th>
@@ -58,39 +58,9 @@
         //取得訂單內容
         const order=document.querySelector('.order-list');
         let orderData=[]
-        //倉儲服務
-        axios.get(`${_url}/process`)
-        .then(res=>{
-           orderData=res.data
-           orderData.forEach(item=>{
-            console.log(item)
-            if(item.userId!==id){
-               return;
-              }
-              let str=''
-              str+=`
-              <tr>
-                <th scope="row"><input type="checkbox"></th>
-                <td>${item.customerName}</td>
-                <td>${item.demand}</td>
-                <td>${item.deliveryDate}</td>
-                <td>${item.deliveryDateTime}</td>
-                <td class="deletBtn">
-                  <a href="#" class="p-2 link-primary fs-5">
-                    <i class="fa-solid fa-trash-can"  data-id="${item.id}"></i>
-                  </a>
-                </td>
-              </tr>
-              `
-              order.innerHTML+=str
-           })
-        })
-        //出貨
-        axios.get(`${_url}/shops`)
-        .then(res=>{
-          orderData=res.data
+        function render(){
           orderData.forEach(item=>{
-            if(item.userId!==id){
+              if(item.userId!==id){
                return;
             }
             let str=''
@@ -109,39 +79,35 @@
               </tr>
             `
             order.innerHTML+=str
-          })
+            })
+        }
+        //倉儲服務
+        axios.get(`${_url}/process`)
+        .then(res=>{
+          orderData=res.data
+          render();
         })
-        .catch(err=>{
-          console.log(err)
+        //出貨
+        axios.get(`${_url}/shops`)
+        .then(res=>{
+          orderData=res.data
+          render();
+        })
+        //儲位租用
+        axios.get(`${_url}/depotrents`)
+        .then(res=>{
+            orderData=res.data;
+            render();
         })
         //刪除按鈕
         order.addEventListener('click',e=>{
            const orderId=e.target.getAttribute('data-id');
+           const table=document.getElementById('demandTable');
+           const tableNum=table.rows[1].cells[2].innerHTML;
+           console.log(tableNum);
            if(orderId===null){
-             alert('你點錯了');
              return;
            }
-           axios.delete(`${_url}/shops/${orderId}`)
-           .then(res=>{
-              alert('刪除成功');
-           })
-           .catch(err=>{
-              console.log(err);
-           })
-        })
-        order.addEventListener('click',e=>{
-           const orderId=e.target.getAttribute('data-id');
-           if(orderId===null){
-             alert('你點錯了');
-             return;
-           }
-           axios.delete(`${_url}/process/${orderId}`)
-           .then(res=>{
-              alert('刪除成功');
-           })
-           .catch(err=>{
-              console.log(err);
-           })
         })
     </script>
 </body>

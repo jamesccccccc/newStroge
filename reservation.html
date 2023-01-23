@@ -40,10 +40,7 @@
                      <div class="progressbar-step" data-name="預約派車"></div>
                  </div>
                  <div class="form-step form-step-active">
-                    <div class="mb-3 fw-bold">
-                        <label for="exampleInputCustomer" class="form-label">客戶名稱:</label>
-                        <input type="Customer" class="customerName form-control" id="exampleInputCustomer" aria-describedby="emailHelp">
-                      </div>
+               
                       <div class="mb-3 fw-bold">
                         <label for="exampleInputContactphone" class="form-label">連絡電話:</label>
                         <input type="Contactphone" class="customerPhone form-control" id="exampleInputContactphone">
@@ -124,7 +121,7 @@
                         <input type="text" class="pickupAddres form-control mt-3" id="exampleInputAddres" placeholder="地址">
                     </div>
                     <div class="mb-3 fw-bold">
-                        <label for="sendArea">請輸入取貨地址:</label>
+                        <label for="sendArea">請輸入送達地址:</label>
                         <select id="sendArea" class="form-select" aria-label="Default select example">
                             <option selected>市區</option>
                             <option value="臺北市">臺北市</option>
@@ -166,7 +163,6 @@
     const sendOut=document.querySelector('.sendout-Btn');
     sendOut.addEventListener('click',e=>{
         e.preventDefault();
-        const customerName=document.querySelector('.customerName').value;
         const customerMail=document.querySelector('.customerMail').value;
         const customerWeight=document.querySelector('.customerWeight').value;
         const customerItems=document.querySelector('.customerItems').value;
@@ -180,16 +176,16 @@
         const pickupAddres=document.querySelector('.pickupAddres').value;
         const sendArea=document.getElementById('sendArea').value;
         const sendAddres=document.querySelector('.sendAddres').value;
-        if(customerName===''||customerMail===''||customerWeight===''||customerItems===''||customerRemark===''||
+        if(customerMail===''||customerWeight===''||customerItems===''||customerRemark===''||
            recipientName===''||recipientPhone===''||recipientMail===''||deliveryDate===''||
            deliveryTime===''||pickupArea===''||pickupAddres===''||sendArea===''||sendAddres==='' ){
             alert('資訊不完整請重新輸入');
             return;
         }
-        axios.post(`${_url}/600/shops`,{
+         axios.post(`${_url}/600/shops`,{
             "userId":id,
             "demand":"出貨",
-            "customerName":customerName,
+            "customerName":userName,
             "customerMail":customerMail,
             "customerWeight":customerWeight,
             "customerItems":customerItems,
@@ -203,19 +199,21 @@
             "pickupAddres":pickupAddres,
             "sendArea":sendArea,
             "sendAddres":sendAddres
-        },{
+         },{
             headers: {
               'Content-Type':'application/json',
               'Authorization': 'Bearer '+token  
-          }
-        })
-        .then(res=>{
-            console.log(res);
+               }
+
+         })
+         .then(res=>{
+            console.log(res); 
             window.location.replace('http://127.0.0.1:5501/afterlogin.html');
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+         })
+         .catch(err=>{
+             console.log(err)
+         })
+  
     })
    </script>
 </body>

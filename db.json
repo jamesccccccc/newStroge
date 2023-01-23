@@ -64,5 +64,37 @@
     }
   ],
   "shops": [],
-  "process": []
+  "process": [],
+  "depotrents": [
+    {
+      "customerName": "james",
+      "userId": "1",
+      "demand": "儲位租用",
+      "work": [
+        "搬家暫放"
+      ],
+      "pingNum": "20坪",
+      "place": "2天",
+      "deliveryDate": "2023-01-10",
+      "deliveryTime": "20:05",
+      "area": "臺北市",
+      "addres": "大安區",
+      "id": 1
+    },
+    {
+      "customerName": "james",
+      "userId": "1",
+      "demand": "儲位租用",
+      "work": [
+        "空間不夠"
+      ],
+      "pingNum": "20坪",
+      "place": "1年",
+      "deliveryDate": "2023-01-05",
+      "deliveryTime": "21:28",
+      "area": "臺北市",
+      "addres": "大安區",
+      "id": 2
+    }
+  ]
 }

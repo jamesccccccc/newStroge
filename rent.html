@@ -36,46 +36,77 @@
         <form class="pt-3 pb-5 px-5">
               <div class="check-list d-flex flex-column fw-bold mb-5">
                 <div class="mb-3 form-check ">
-                  <input type="checkbox" class="check-item" id="interspace" value="空間不夠">
+                  <input type="checkbox" class="lease" id="interspace" value="空間不夠">
                   <label class="form-check-label" for="interspace"><span class="ps-3">空間不夠</span></label>
                 </div>
                   <div class="mb-3 form-check ">
-                  <input type="checkbox" class="check-item" id="moveplace" value="搬家暫放">
+                  <input type="checkbox" class="lease" id="moveplace" value="搬家暫放">
                   <label class="form-check-label" for="moveplace"><span class="ps-3">搬家暫放</span></label>
                 </div>
                 <div class="mb-3 form-check ">
-                  <input type="checkbox" class="check-item" id="unuseful" value="暫放目前不需用到的東西">
+                  <input type="checkbox" class="lease" id="unuseful" value="暫放目前不需用到的東西">
                   <label class="form-check-label" for="unuseful"><span class="ps-3">暫放目前不需用到的東西</span></label>
                 </div>
                 <div class="mb-3 form-check ">
-                  <input type="checkbox" class="check-item" id="manufacturers" value="廠商要求">
+                  <input type="checkbox" class="lease" id="manufacturers" value="廠商要求">
                   <label class="form-check-label" for="manufacturers"><span class="ps-3">廠商要求</span></label>
                 </div>
                 <div class="mb-3 form-check  form-check-other">
-                    <input type="checkbox" class="check-item" id="other" value="其他">
-                    <label class="form-check-label" for="other"><span class="ps-3">其他:</span></label>
-                    <input type="text" class="check-item mt-2" placeholder="請輸入" id="other">
+                    <input type="checkbox" class="lease" id="other" value="其他">
+                    <label class="form-check-label" for="other"><span class="ps-3 me-3">其他</span></label>
                 </div>
               </div>
               <h2 class="fs-5 fw-bold ps-3">請預估空間需要多大? 幾坪?</h2>
               <div class="mb-3 form-check-other mb-6 px-3">
-                  <label class="form-check-label" for="special"></label>
-                  <input type="text" size="50" class="check-item" placeholder="請輸入" id="special">
+                  <label class="form-check-label" for="ping-Number"></label>
+                  <input type="text" size="50" class="check-item" placeholder="請輸入" id="ping-Number">
               </div>
               <h3 class="fs-5 fw-bold  ps-3">預計存放的時間?</h3>
               <div class="mb-3 fw-bold form-check-temporary ps-3">
-                <label for="temporary"></label>
-                <input type="text" size="5" class="temporary-item"  id="other">
-                <select id="temporary" class="temporary-select" aria-label="Default select example">
-                    <option selected="">Day</option>
-                    <option value="1">Month</option>
-                    <option value="2">Year</option>
+                <label for="form-check-label">
+                 <input type="text" size="10" class="check-item" placeholder="請輸入" id="depositDay">
+                <select id="depositTime" class="temporary-select" aria-label="Default select example">
+                    <option selected="">天</option>
+                    <option value="個月">個月</option>
+                    <option value="年">年</option>
                 </select>
+              </label>
+              </div>
+              <h3 class="fs-5 fw-bold ms-3 ">請提供預計出貨的日期</h3>
+              <div class="mb-3 form-check ps-3">
+                <input type="date" class="shipDate" id="date">
+                <label class="form-check-label" for="date"></label>
+                <input type="time" class="shipTime" id="time">
+                <label class="form-check-label" for="time"></label>
+              </div>
+              <div class="mb-3 fw-bold ms-3">
+                <label for="area">請輸入取貨地址:</label>
+                <select id="area" class="form-select" aria-label="Default select example">
+                    <option selected>市區</option>
+                    <option value="臺北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                </select>
+                <input type="text" class="pickupAddres form-control mt-3" id="addres" placeholder="地址">
               </div>
         </form>
-        <div class="select d-flex justify-content-center pb-6">
-            <button type="button" class="ms-5 select-btn"><a class="link-white" href="consult.html">取消</a></button>
-            <button type="button" class="ms-5 select-btn send-Btn"><a class="link-white" href="#">確認</a></button>
+        <div class="select d-flex justify-content-between pb-6">
+            <button type="button" class="ms-5 select-btn ms-6"><a class="link-white" href="consult.html">取消</a></button>
+            <button type="button" class="ms-5 select-btn me-6 send-Btn"><a class="link-white" href="#">確認</a></button>
         </div> 
        </div>
     </div>
@@ -85,6 +116,68 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
     <script src="js/reservation.js"></script>
-    <script></script>
+    <script>
+      const send=document.querySelector('.send-Btn');
+      const rent=document.querySelectorAll('.lease');
+      let rentData=[]
+      rent.forEach(item=>{
+          item.addEventListener('click',e=>{
+             let rentNum=item.value;
+             if(item.checked==true){
+                rentData.push(rentNum);
+             }else{
+                rentData.length=0;
+             }
+          })
+      })
+      //發送服務
+      send.addEventListener('click',e=>{
+          const pingNum=document.getElementById('ping-Number').value;
+          const shipDate=document.getElementById('date').value;
+          const shipTime=document.getElementById('time').value;
+          const shipArea=document.getElementById('area').value;
+          const shipAddres=document.getElementById('addres').value;
+          const placeday=document.getElementById('depositDay').value;
+          const placeTime=document.getElementById('depositTime').value;
+          const placeDate=(placeday+placeTime);
+          let rentList={}
+          rentList.name=userName,
+          rentList.id=id,
+          rentList.demand="儲位租用",
+          rentList.work=rentData,
+          rentList.ping=pingNum,
+          rentList.place=placeDate,
+          rentList.date=shipDate,
+          rentList.time=shipTime,
+          rentList.area=shipArea,
+          rentList.addres=shipAddres
+          axios.post(`${_url}/600/depotrents`,{
+            "customerName":rentList.name,
+            "userId":rentList.id,
+            "demand":rentList.demand,
+            "work":rentList.work,
+            "pingNum":rentList.ping,
+            "place":rentList.place,
+            "deliveryDate":rentList.date,
+            "deliveryTime":rentList.time,
+            "area":rentList.area,
+            "addres":rentList.addres,
+
+          },{
+              headers: {
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer '+token  
+              }
+          })
+          .then(res=>{
+            console.log(res);
+            window.location.replace('http://127.0.0.1:5501/afterlogin.html');
+          })
+          .catch(err=>{
+            console.log(err);
+          })
+      
+        })
+    </script>
 </body>
 </html>
