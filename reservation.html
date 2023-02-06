@@ -166,7 +166,7 @@
         const customerMail=document.querySelector('.customerMail').value;
         const customerWeight=document.querySelector('.customerWeight').value;
         const customerItems=document.querySelector('.customerItems').value;
-        const customerRemark=document.querySelector('.remark').value;
+        const customerPhone=document.querySelector('.customerPhone').value;
         const recipientName=document.querySelector('.recipientName').value;
         const recipientPhone=document.querySelector('.recipientPhone').value;
         const recipientMail=document.querySelector('.recipientMail').value;
@@ -176,7 +176,7 @@
         const pickupAddres=document.querySelector('.pickupAddres').value;
         const sendArea=document.getElementById('sendArea').value;
         const sendAddres=document.querySelector('.sendAddres').value;
-        if(customerMail===''||customerWeight===''||customerItems===''||customerRemark===''||
+        if(customerMail===''||customerWeight===''||customerItems===''||customerPhone===''||
            recipientName===''||recipientPhone===''||recipientMail===''||deliveryDate===''||
            deliveryTime===''||pickupArea===''||pickupAddres===''||sendArea===''||sendAddres==='' ){
             alert('資訊不完整請重新輸入');
@@ -188,8 +188,8 @@
             "customerName":userName,
             "customerMail":customerMail,
             "customerWeight":customerWeight,
+            "customerPhone":customerPhone,
             "customerItems":customerItems,
-            "customerRemark":customerRemark,
             "recipientName":recipientName,
             "recipientPhone":recipientPhone,
             "recipientMail":recipientMail,
@@ -207,13 +207,8 @@
 
          })
          .then(res=>{
-            console.log(res); 
             window.location.replace('http://127.0.0.1:5501/afterlogin.html');
          })
-         .catch(err=>{
-             console.log(err)
-         })
-  
     })
    </script>
 </body>

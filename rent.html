@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="scss/all.css">
+    <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+HK:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>儲位租用</title>
@@ -151,7 +151,7 @@
           rentList.time=shipTime,
           rentList.area=shipArea,
           rentList.addres=shipAddres
-          axios.post(`${_url}/600/depotrents`,{
+          axios.post(`${_url}/600/shops`,{
             "customerName":rentList.name,
             "userId":rentList.id,
             "demand":rentList.demand,
@@ -170,7 +170,6 @@
               }
           })
           .then(res=>{
-            console.log(res);
             window.location.replace('http://127.0.0.1:5501/afterlogin.html');
           })
           .catch(err=>{

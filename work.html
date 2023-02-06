@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="scss/all.css">
+    <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+HK:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>倉儲服務</title>
@@ -79,7 +79,7 @@
               <h2 class="fs-5 fw-bold px-5">特殊需求或加工(請詳細提供)</h2>
               <div class="mb-3 form-check-other mb-6 px-5">
                   <label class="form-check-label" for="special"></label>
-                  <input type="text" size="50" class="check-item" id="special" value="">
+                  <input type="text" size="50" class="special-Service" id="special" value="">
               </div>
               <h3 class="fs-5 fw-bold px-5">請提供預計出貨的日期</h3>
               <div class="mb-3 form-check px-5">
@@ -124,8 +124,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
-   <script src="js/reservation.js"></script>
-   <script>
+    <script src="js/reservation.js"></script>
+    <script>
       const selectAll=document.getElementById('select-All');
       const process=document.querySelectorAll('.process');
       const send=document.querySelector('.send-Btn');
@@ -183,22 +183,25 @@
           const shipTime=document.getElementById('time').value;
           const pickupArea=document.getElementById('area').value;
           const pickupAddres=document.getElementById('addres').value;
+          const specaial=document.querySelector('.special-Service').value;
           let order={}
-          order.name=userName,
-          order.id=id,
-          order.demand="倉儲服務"
+          order.name=userName;
+          order.id=id;
+          order.demand="倉儲服務";
           order.work=selectData;
           order.commerce=commerceData;
-          order.date=shipDate,
-          order.time=shipTime,
-          order.area=pickupArea,
-          order.addres=pickupAddres,
-          axios.post(`${_url}/600/process`,{
+          order.specaial=specaial;
+          order.date=shipDate;
+          order.time=shipTime;
+          order.area=pickupArea;
+          order.addres=pickupAddres;
+          axios.post(`${_url}/600/shops`,{
              "customerName":order.name,
              "userId":order.id,
              "demand":order.demand,
              "work":order.work,
              "commerce":order.commerce,
+             "specaial":order.specaial,
              "deliveryDate":order.date,
              "deliveryTime":order.time,
              "area":order.area,
@@ -210,13 +213,8 @@
                }
           })
           .then(res=>{
-              console.log(res); 
               window.location.replace('http://127.0.0.1:5501/afterlogin.html');
           })
-          .catch(err=>{
-
-          })
-          
       })
    </script>
 </body>

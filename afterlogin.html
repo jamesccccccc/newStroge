@@ -135,11 +135,7 @@
               </a>
              <div class="d-flex flex-column jsutify-content-start ml-2">
                 <ul class="comment-star d-flex ms-3">
-                  <li class="star">&#9733;</li>
-                  <li class="star">&#9733;</li>
-                  <li class="star">&#9733;</li>
-                  <li class="star">&#9733;</li>
-                  <li class="star">&#9733;</li>
+               
                 </ul>
                   <span class="d-block fw-bold  fs-6 ms-3 ">太贊了</span>
              </div>
@@ -233,10 +229,17 @@
     <script>
        let logout=document.querySelector('.logout');
        let allstars=document.querySelectorAll('.star');
+       console.log(allstars);
        let sendMessage=document.querySelector('.send-message');
        let commentList=document.querySelector(".commentList");
        let commentData=[];
        let heade=[];
+       let starNum={};
+            //登出
+        logout.addEventListener('click',function(e){
+           localStorage.clear();
+           window.location.replace('http://127.0.0.1:5501/index.html');
+       })
        //渲染留言內容
         function init(){
         axios.get(`${_url}/posts`)
@@ -249,13 +252,13 @@
                   <a href="#"><img class="rounded-pill"  src="https://ui-avatars.com/api/?name=${item.userName}&background=random&color=fff" width="32px" height="32px">
                   </a>
                  <div class="d-flex flex-column jsutify-content-start ml-2">
-                    <div class="comment-star d-flex ms-3">
+                  <div class="comment-star d-flex ms-3">
+                    <div class="star">&#9733;</div>
                       <div class="star">&#9733;</div>
                       <div class="star">&#9733;</div>
                       <div class="star">&#9733;</div>
                       <div class="star">&#9733;</div>
-                      <div class="star">&#9733;</div>
-                    </div>
+                  </div>
                       <span class="d-block fw-bold  fs-6 ms-3 ">${item.content} </span>
                  </div>
            </li>    
@@ -268,26 +271,25 @@
             })
       }
         init();
-       //登出
-        logout.addEventListener('click',function(e){
-           localStorage.clear();
-            window.location.replace('http://127.0.0.1:5501/index.html');
-       })
        //留言星星
         allstars.forEach((item,i)=>{
           item.addEventListener('click',function(e){
             allstars.forEach((item,j)=>{
                  if(i>=j){
                     item.innerHTML='&#9733';
+                    heade.push(item.innerHTML='&#9733');
                  }else{
                     item.innerHTML="&#9734";
+                    
                  }
+                 
             })
+          
           })
-       })
+       })  
        //發送留言
         sendMessage.addEventListener('click',function(e){
-         addPost();
+          console.log(heade);
       })
         function addPost(){
         let message=document.querySelector('.user-Message').value;

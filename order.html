@@ -33,21 +33,48 @@
     </div>
     <div class="container mt-5">
       <div class="title bg-grey2 text-white fw-bold py-3 fs-4 text-center">訂單資訊</div>
-        <table class="table" id="demandTable">
+      <table class="table" id="demandTable">
             <thead>
               <tr>
-                <th scope="col">全選 <input type="checkbox"></th>
+                <th scope="col">
+                  <div class="d-flex selectList">
+                    <input type="checkbox" id="selectAll" class="select-All">
+                    <label for="selectAll"><span class="ms-3">全選</span></label>
+                  </div> 
+                </th>
                 <th scope="col">客戶名稱</th>
                 <th scope="col">需求</th>
                 <th scope="col">預約日期</th>
                 <th scope="col">收貨時間</th>
-                <th scope="col">刪除</th>
               </tr>
             </thead>
             <tbody class="order-list">
             </tbody>
-        </table>
+      </table>
+      <div class="d-flex justify-content-between">
+             <input type="button" class="check-order bg-white text-primary border border-2 border-primary rounded  " value="查看訂單">
+             <input type="button" class="deleteAll-Btn bg-white text-primary border border-2 border-primary rounded  " value="刪除">
+      </div>
+      <!-- Model模板 -->
+      <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header ">
+              <div class="title d-flex justify-content-center">
+                <h2 class="modal-title fw-bold" id="exampleModalLabel">訂單內容</h2>
+              </div>
+              <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <div class="user-Demand">
+                
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <!--頁尾-->
     <script src="js/config.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
@@ -55,60 +82,288 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script>
-        //取得訂單內容
+        
         const order=document.querySelector('.order-list');
+        const seletallBtn=document.getElementById('selectAll');
+        const deleteBtn=document.querySelector('.deleteAll-Btn');
+        const orderBtn=document.querySelector('.check-order');
+        const closeBtn=document.querySelector('.btn-close');
         let orderData=[]
+        //渲染訂單內容
         function render(){
-          orderData.forEach(item=>{
-              if(item.userId!==id){
+          orderData.forEach((item,index)=>{
+            if(item.userId!==id){
                return;
             }
             let str=''
             str+=`
             <tr>
-                <th scope="row"><input type="checkbox"></th>
-                <td>${item.customerName}</td>
+                <th scope="col">
+                  <div class="d-flex ms-3 select-List">
+                    <input type="checkbox" id="${item.id}" style="width:30px;height:30px;" class="select-Num position-absolute " >
+                    <label for="${item.id} class="position-relative"></label>     
+                  </div>  
+                </th>
+                <td class="ps-3">${item.customerName}</td>
                 <td>${item.demand}</td>
                 <td>${item.deliveryDate}</td>
-                <td>${item.deliveryTime}</td>
-                <td class="deletBtn">
-                  <a href="#" class="p-2 link-primary fs-5">
-                    <i class="fa-solid fa-trash-can"  data-id="${item.id}"></i>
-                  </a>
-                </td>
+                <td class="ps-3">${item.deliveryTime}</td>
+            
               </tr>
             `
             order.innerHTML+=str
-            })
+          })
         }
-        //倉儲服務
-        axios.get(`${_url}/process`)
-        .then(res=>{
+        function init(){
+          axios.get(`${_url}/shops`)
+          .then(res=>{
           orderData=res.data
           render();
         })
-        //出貨
-        axios.get(`${_url}/shops`)
-        .then(res=>{
-          orderData=res.data
-          render();
+        }
+        init();
+        //全選
+        seletallBtn.addEventListener('click',e=>{
+          if(seletallBtn.checked === true){
+              let selectList=document.querySelectorAll('.select-Num');
+              selectList.forEach((item,i)=>{
+                  if(i<selectList.length){
+                     selectList[i].checked=true;
+                  }
+                  
+              })
+          }
+          if(seletallBtn.checked === false){
+              let selectList=document.querySelectorAll('.select-Num');
+              selectList.forEach((item,i)=>{
+                  if(i<selectList.length){
+                     selectList[i].checked=false;
+
+                  }
+              })
+
+          }
         })
-        //儲位租用
-        axios.get(`${_url}/depotrents`)
-        .then(res=>{
-            orderData=res.data;
-            render();
+        //刪除訂單
+        deleteBtn.addEventListener('click',e=>{
+            let seletallBtn=document.getElementById('selectAll');
+            let selectAll=document.querySelectorAll('.select-Num');
+            //刪除全部訂單
+            if(seletallBtn.checked === true){
+               axios.delete(`${_url}/600/shops/${id}`,{
+                headers: {
+                  'Content-Type':'application/json',
+                  'Authorization': 'Bearer '+token  
+               }
+               })
+               .then(res=>{
+                  console.log(res);
+               })
+            }
+            ////刪除單筆訂單
+            selectAll.forEach(item=>{
+                if(item.checked===true){
+                  axios.delete(`${_url}/shops/${item.id}`)
+                  .then(res=>{
+                     alert('刪除成功')
+                  })
+                  .catch(err=>{
+                     alert('請選擇要刪除的項目')
+                  })
+                }
+            })
+            
         })
-        //刪除按鈕
-        order.addEventListener('click',e=>{
-           const orderId=e.target.getAttribute('data-id');
-           const table=document.getElementById('demandTable');
-           const tableNum=table.rows[1].cells[2].innerHTML;
-           console.log(tableNum);
-           if(orderId===null){
-              return;
-           }
+        //查看訂單
+        function renderOrder(){
+          axios.get(`${_url}/shops`)
+          .then(res=>{
+            let orderData=res.data;
+            orderData.forEach((item,i)=>{
+                let str=''
+                if(item.customerName!==userName){
+                   return;
+                }
+                if(item.demand==="出貨"){
+                  str+=`
+                  <h2 class="fs-3 fw-bold text-grey3">需求:${item.demand}</h2>
+                  <ul class="user-list list-unstyled border border-grey1 rounded border-2">
+                    <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2">會員名稱:</h3><span>${item.customerName}</span>
+                    </li>
+                    <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">電話:</h3><span>${item.customerPhone}</span>
+                    </li>
+                    <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">Email:</h3><span>${item.customerMail}</span>
+                    </li>
+                    <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">貨物重量:</h3><span>${item.customerWeight}</span>
+                    </li>
+                    <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">內裝物品:</h3><span>${item.customerItems}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">收件人名稱:</h3><span>${item.recipientName}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">收件人電話:</h3><span>${item.recipientPhone}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey- fw-bold">Email:</h3><span>${item.recipientMail}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">派車日期:</h3><span>${item.deliveryDate}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">派車時間:</h3><span>${item.deliveryTime}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">取貨地址::</h3><span>${item.pickupArea+item.pickupAddres}</span>
+                    </li>
+                    <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                      <h3 class="fs-6 text-grey-2 fw-bold">送達地址:</h3><span>${item.sendArea+item.sendAddres}</span>
+                    </li>
+                  </ul>
+                  `
+                  const orderList=document.querySelector('.user-Demand');
+                  orderList.innerHTML+=str;
+                }
+                if(item.demand==="倉儲服務"){
+                  str+=`
+                    <h2 class="fs-3 fw-bold text-grey3">需求:${item.demand}</h2>
+                      <ul class="user-list list-unstyled border border-grey1 rounded border-2">
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">會員名稱:</h3><span>${item.customerName}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">加工服務:</h3><span>${item.work}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">客戶:</h3><span>${item.commerce}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">特殊需求或加工:</h3><span>${item.specaial}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">派車日期:</h3><span>${item.deliveryDate}</span>
+                        </li> 
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">派車時間:</h3><span>${item.deliveryTime}</span>
+                        </li> 
+                        <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">取貨地址:</h3><span>${item.area+item.addres}</span>
+                        </li>
+                      </ul>
+                  `
+                  const orderList=document.querySelector('.user-Demand');
+                  orderList.innerHTML+=str;
+                }
+                if(item.demand==="儲位租用"){
+                    console.log(item);
+                    str+=`
+                    <h2 class="fs-3 fw-bold text-grey3">需求:${item.demand}</h2>
+                      <ul class="user-list list-unstyled border border-grey1 rounded border-2">
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">會員名稱:</h3><span>${item.customerName}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">租放的原因:</h3><span>${item.work}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">需要空間:</h3><span>${item.pingNum}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">存放的時間:</h3><span>${item.place}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">派車日期:</h3><span>${item.deliveryDate}</span>
+                        </li>
+                        <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">派車時間:</h3><span>${item.deliveryTime}</span>
+                        </li>  
+                        <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                          <h3 class="fs-6 text-grey-2 fw-bold fw-bold">取貨地址:</h3><span>${item.area+item.addres}</span>
+                        </li>
+                      </ul>
+                    `
+                    const orderList=document.querySelector('.user-Demand');
+                    orderList.innerHTML+=str;
+                }
+            })
+          })
+        
+        }
+        orderBtn.addEventListener('click',e=>{
+          let exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+          renderOrder();
+          exampleModal.show();
+          //關閉按鈕
+          closeBtn.addEventListener('click',e=>{
+            exampleModal.hide();
+          })
+              
         })
+     
+        
+       
+             
+         
+
+        
+           
+    
+          
+           
+      // let exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));    
+      /*
+
+
+
+          <ul class="user-list list-unstyled border border-grey1 rounded border-2">
+                                  <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">需求:</h3><span>${item.demand}</span>
+                                  </li>
+                                  <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">會員名稱:</h3><span>${item.customerName}</span>
+                                  </li>
+                                  <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">電話:</h3><span>${item.customerPhone}</span>
+                                  </li>
+                                  <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">Email:</h3><span>${item.customerMail}</span>
+                                  </li>
+                                  <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">貨物重量:</h3><span>${item.customerWeight}</span>
+                                  </li>
+                                  <li class="user-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">內裝物品:</h3><span>${item.customerItems}</span>
+                                  </li>
+                              </ul>
+                              <ul class="client-list list-unstyled border border-grey1 rounded border-2">
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">收件人名稱:</h3><span>${item.recipientName}</span>
+                                  </li>
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">收件人電話:</h3><span>${item.recipientPhone}</span>
+                                  </li>
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">Email:</h3><span>${item.recipientMail}</span>
+                                  </li>
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">派車日期:</h3><span>${item.deliveryDate}</span>
+                                  </li>
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">派車時間:</h3><span>${item.deliveryTime}</span>
+                                  </li>
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">取貨地址::</h3><span>${item.pickupArea+item.pickupAddres}</span>
+                                  </li>
+                                  <li class="client-item mt-3 ms-2 py-3 border border-2 border-grey border-top-0 border-start-0 border-end-0">
+                                    <h3 class="fs-6 text-grey-2">送達地址:</h3><span>${item.sendArea+item.sendAddres}</span>
+                                  </li>
+                              </ul>*/
+        
     </script>
 </body>
 </html>

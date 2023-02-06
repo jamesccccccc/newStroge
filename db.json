@@ -61,40 +61,90 @@
       "userId": "1",
       "userName": "james",
       "id": 7
+    },
+    {
+      "content": "1",
+      "userId": "1",
+      "userName": "james",
+      "id": 8
+    },
+    {
+      "content": "",
+      "userId": "1",
+      "userName": "james",
+      "id": 9
     }
   ],
-  "shops": [],
-  "process": [],
-  "depotrents": [
+  "shops": [
     {
-      "customerName": "james",
       "userId": "1",
-      "demand": "儲位租用",
-      "work": [
-        "搬家暫放"
-      ],
-      "pingNum": "20坪",
-      "place": "2天",
-      "deliveryDate": "2023-01-10",
-      "deliveryTime": "20:05",
-      "area": "臺北市",
-      "addres": "大安區",
+      "demand": "出貨",
+      "customerName": "james",
+      "customerMail": "gyt455398@gmail.com",
+      "customerWeight": "50KG",
+      "customerPhone": "0982709433",
+      "customerItems": "3C零件",
+      "recipientName": "PChome",
+      "recipientPhone": "02 2326 1460",
+      "recipientMail": "google1234@gmail.com",
+      "deliveryDate": "2023-01-31",
+      "deliveryTime": "18:27",
+      "pickupArea": "桃園市",
+      "pickupAddres": "中壢區中山北路246號",
+      "sendArea": "臺北市",
+      "sendAddres": "大安區",
       "id": 1
     },
     {
       "customerName": "james",
       "userId": "1",
+      "demand": "倉儲服務",
+      "work": [
+        "盤點"
+      ],
+      "commerce": [
+        "B2B"
+      ],
+      "specaial": "請幫我打包",
+      "deliveryDate": "2023-02-01",
+      "deliveryTime": "19:28",
+      "area": "臺北市",
+      "addres": "大安區",
+      "id": 2
+    },
+    {
+      "customerName": "james",
+      "userId": "1",
+      "demand": "倉儲服務",
+      "work": [
+        "盤點",
+        "商品分裝"
+      ],
+      "commerce": [
+        "B2B",
+        "B2C"
+      ],
+      "specaial": "",
+      "deliveryDate": "2023-02-02",
+      "deliveryTime": "19:28",
+      "area": "桃園市",
+      "addres": "中壢區",
+      "id": 3
+    },
+    {
+      "customerName": "judy",
+      "userId": "2",
       "demand": "儲位租用",
       "work": [
         "空間不夠"
       ],
       "pingNum": "20坪",
-      "place": "1年",
-      "deliveryDate": "2023-01-05",
-      "deliveryTime": "21:28",
+      "place": "3天",
+      "deliveryDate": "2023-02-03",
+      "deliveryTime": "20:05",
       "area": "臺北市",
       "addres": "大安區",
-      "id": 2
+      "id": 4
     }
   ]
 }

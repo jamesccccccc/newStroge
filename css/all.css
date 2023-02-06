@@ -11221,6 +11221,45 @@ textarea {
   width: 400px;
 }
 
+input[type=checkbox] {
+  opacity: 0;
+}
+
+input[type=checkbox] + label {
+  display: block;
+}
+
+input[type=checkbox] + label:before {
+  content: "✓";
+  border: 0.15em solid #ccc;
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  padding-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  color: transparent;
+}
+
+input[type=checkbox]:checked + label:before {
+  background-color: #FF5119;
+  border: none;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.radio-item label {
+  padding: 0 10px;
+}
+
+.radio-item input[type=checkbox] + label:before {
+  border-radius: 50%;
+}
+
+.modal-dialog {
+  z-index: 1000 !important;
+}
+
 .swiper {
   max-width: 600px;
   height: 600px;
@@ -11544,10 +11583,28 @@ i.fa-regular.fa-address-card {
   padding: 10px 50px;
   border-radius: 5px;
   border: none;
-  background-color: #FF7F50;
+  background-color: #FF5119;
   color: #fff;
+}
+
+.select-btn:hover {
+  background-color: #f1440a;
 }
 
 .order {
   background-color: #fddfcd;
+}
+
+.order-Btn {
+  position: absolute;
+  top: -30%;
+  left: -60%;
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-backdrop {
+  opacity: 0.2 !important;
+  filter: alpha(opacity=0) !important;
 }/*# sourceMappingURL=all.css.map */
