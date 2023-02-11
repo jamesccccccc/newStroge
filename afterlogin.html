@@ -129,17 +129,7 @@
           <div class="bg-white p-2 rounded border ">
            <h4 class="fw-bold border-grey1 border-bottom py-3 mb-3">評論</h4>
            <!--留言區-->
-           <ul class="commentList d-flex flex-column list-unstyled px-3">
-            <li class="d-flex my-3"> 
-              <a href="#"><img class="rounded-pill"  src="https://ui-avatars.com/api/?name=joe&background=random&color=fff" width="32px" height="32px">
-              </a>
-             <div class="d-flex flex-column jsutify-content-start ml-2">
-                <ul class="comment-star d-flex ms-3">
-               
-                </ul>
-                  <span class="d-block fw-bold  fs-6 ms-3 ">太贊了</span>
-             </div>
-       </li>   
+           <ul class="commentList d-flex flex-column list-unstyled px-3"> 
            </ul>
        </div>
        <div class="box text-center mt-3">
@@ -229,13 +219,11 @@
     <script>
        let logout=document.querySelector('.logout');
        let allstars=document.querySelectorAll('.star');
-       console.log(allstars);
        let sendMessage=document.querySelector('.send-message');
        let commentList=document.querySelector(".commentList");
        let commentData=[];
-       let heade=[];
-       let starNum={};
-            //登出
+       let starNum=[];
+        //登出
         logout.addEventListener('click',function(e){
            localStorage.clear();
            window.location.replace('http://127.0.0.1:5501/index.html');
@@ -246,6 +234,7 @@
           .then(res=>{
                 commentData=res.data
                 commentData.forEach(item=>{
+                let starTatol=item.starNum.join(" ")
                 let str=''
                 str+=`
                 <li class="d-flex my-3"> 
@@ -253,11 +242,8 @@
                   </a>
                  <div class="d-flex flex-column jsutify-content-start ml-2">
                   <div class="comment-star d-flex ms-3">
-                    <div class="star">&#9733;</div>
-                      <div class="star">&#9733;</div>
-                      <div class="star">&#9733;</div>
-                      <div class="star">&#9733;</div>
-                      <div class="star">&#9733;</div>
+                      <div class="star">${starTatol}</div>
+                     
                   </div>
                       <span class="d-block fw-bold  fs-6 ms-3 ">${item.content} </span>
                  </div>
@@ -277,10 +263,10 @@
             allstars.forEach((item,j)=>{
                  if(i>=j){
                     item.innerHTML='&#9733';
-                    heade.push(item.innerHTML='&#9733');
+                    let star=item.innerHTML='&#9733';
+                    starNum.push(star);
                  }else{
-                    item.innerHTML="&#9734";
-                    
+                    item.innerHTML="&#9734";           
                  }
                  
             })
@@ -289,27 +275,27 @@
        })  
        //發送留言
         sendMessage.addEventListener('click',function(e){
-          console.log(heade);
-      })
-        function addPost(){
-        let message=document.querySelector('.user-Message').value;
-         axios.post(`${_url}/600/posts`,{
-          "content":message,
-          "userId":id,
-          "userName":userName
-         },{
-          headers: {
+          let message=document.querySelector('.user-Message').value;
+          axios.post(`${_url}/600/posts`,{
+            "content":message,
+            "userId":id,
+            "userName":userName,
+            "starNum":starNum,
+            },{
+            headers: {
               'Content-Type':'application/json',
               'Authorization': 'Bearer '+token  
-          },      
-         })
-         .then(res=>{
-           console.log(res)
-         })
-         .catch(err=>{
-           console.log(err)
-         })
-       }
+              },      
+            })
+            .then(res=>{
+            console.log(res)
+            })
+            .catch(err=>{
+            console.log(err)
+            })
+          })
+      
+      
     </script>
 </body>
 </html>

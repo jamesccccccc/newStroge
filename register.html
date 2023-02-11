@@ -111,13 +111,14 @@
               let myMail=document.querySelector('.form-email').value;
               let myPassword=document.querySelector('.form-password').value;
               if(document.querySelector('.form-name').value==""||
-                document.querySelector('.form-email').value==""||
-                document.querySelector('.form-password').value=="")
+                 document.querySelector('.form-email').value==""||
+                 document.querySelector('.form-password').value=="")
                 {
                  alert('請輸入會員資料');
                  return;
                 }
-                singup(myName,myMail,myPassword)
+              
+              singup(myName,myMail,myPassword)
          })
          function singup(myName,myMail,myPassword){
               axios.post(`${_url}/signup`,{

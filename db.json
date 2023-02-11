@@ -21,58 +21,41 @@
   ],
   "posts": [
     {
-      "content": "這個平台太棒了",
-      "userId": "1",
-      "userName": "james",
-      "id": 1
-    },
-    {
-      "content": "司機人很熱心很親切",
-      "userId": "1",
-      "userName": "james",
-      "id": 2
-    },
-    {
-      "content": "常常有東西沒地方放,這個平台幫我解決了這個問題",
-      "userId": "2",
-      "userName": "judy",
-      "id": 3
-    },
-    {
-      "content": "收貨速度快,值得5星好評!!",
-      "userId": "1",
-      "userName": "james",
-      "id": 4
-    },
-    {
-      "content": "太棒了",
-      "userId": "2",
-      "userName": "judy",
-      "id": 5
-    },
-    {
-      "content": "讚讚",
-      "userId": "1",
-      "userName": "james",
-      "id": 6
-    },
-    {
       "content": "太贊了",
       "userId": "1",
       "userName": "james",
-      "id": 7
+      "starNum": [
+        "&#9733",
+        "&#9733",
+        "&#9733",
+        "&#9733",
+        "&#9733"
+      ],
+      "id": 1
     },
     {
-      "content": "1",
+      "content": "還行啦",
       "userId": "1",
       "userName": "james",
-      "id": 8
+      "starNum": [
+        "&#9733",
+        "&#9733",
+        "&#9733"
+      ],
+      "id": 2
     },
     {
       "content": "",
       "userId": "1",
       "userName": "james",
-      "id": 9
+      "starNum": [
+        "&#9733",
+        "&#9733",
+        "&#9733",
+        "&#9733",
+        "&#9733"
+      ],
+      "id": 3
     }
   ],
   "shops": [

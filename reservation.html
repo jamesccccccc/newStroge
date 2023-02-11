@@ -30,32 +30,35 @@
          </div>
        </div>
       </div>
-    <div class="order-content bg-primary2 d-flex flex-column align-items-center justify-content-center">
-            <form class="bg-white order">
+    <form class="order-content bg-primary2 d-flex flex-column align-items-center justify-content-center">
+            <div class="bg-white order">
                 <div class="title"><h1 class="fs-3 fw-bold mb-5">請輸入託運資訊</h1></div>
-                 <div class="progressbar">
+                <div class="progressbar">
                     <div class="progress" id="progress"></div>
                      <div class="progressbar-step progressbar-step-active" data-name="客戶資料"></div>
                      <div class="progressbar-step" data-name="收件人資料"></div>
                      <div class="progressbar-step" data-name="預約派車"></div>
-                 </div>
-                 <div class="form-step form-step-active">
-               
-                      <div class="mb-3 fw-bold">
-                        <label for="exampleInputContactphone" class="form-label">連絡電話:</label>
-                        <input type="Contactphone" class="customerPhone form-control" id="exampleInputContactphone">
+                </div>
+                <div class="form-step form-step-active">
+                      <div class="mb-3 fw-bold ">
+                        <label for="exampleInputContactphone" class="form-label ">連絡電話</label>
+                        <input type="text" class="customerPhone form-control p-0 rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1"  id="exampleInputContactphone" placeholder="請輸入電話" name="連絡電話">
+                        <p class="orderInfo-message text-danger" data-message="連絡電話"></p>
                       </div>
                       <div class="mb-3 fw-bold">
-                          <label for="exampleInputMail" class="form-label">Email:</label>
-                          <input type="Mail" class="customerMail form-control" id="exampleInputMail">
+                        <label for="exampleInputMail" class="form-label ">Email</label>
+                        <input type="text" class="customerMail form-control  p-0  rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1" id="exampleInputMail" placeholder="請輸入e-mail" name="信箱">
+                        <p class="orderInfo-message text-danger" data-message="信箱"></p>
                       </div>
                       <div class="mb-3 fw-bold">
-                          <label for="exampleInputKg" class="form-label">貨物重量</label>
-                          <input type="Kg" class="customerWeight form-control" id="exampleInputWeight" placeholder="KG">
+                        <label for="exampleInputKg" class="form-label ">貨物重量</label>
+                        <input type="text" class="customerWeight form-control p-0 rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1" id="exampleInputWeight" placeholder="KG" name="重量">
+                        <p class="orderInfo-message text-danger" data-message="重量"></p>
                       </div>
                       <div class="mb-3 fw-bold">
-                          <label for="exampleInputitems" class="form-label">內裝物品</label>
-                          <input type="items" class="customerItems form-control" id="exampleInputItems">
+                        <label for="exampleInputitems" class="form-label ">內裝物品</label>
+                        <input type="text" class="customerItems form-control p-0 rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1" id="exampleInputItems" placeholder="請輸入內裝物品" name="內裝物品">
+                        <p class="orderInfo-message text-danger" data-message="內裝物品"></p>
                       </div>
                       <div class="mb-3 fw-bold d-flex flex-column">
                           <label for="remark">備註欄:</label>
@@ -67,39 +70,43 @@
                           <button type="submit" class="cancel"><a class="link-white" href="consult.html">取消</a></button>
                           <button type="submit" class="customerBtn Next-Btn">下一步</button>
                       </div>
-                 </div>
-                 <div class="form-step">
+                </div>
+                <div class="form-step">
                     <div class="mb-3 fw-bold">
-                        <h6 class="fw-bold text-danger">※預約儲位租用則無需填寫</h6>
-                        <label for="exampleInputrecipient" class="form-label">收件人名稱:</label>
-                        <input type="recipient" class="recipientName form-control" id="exampleInputrecipient" aria-describedby="emailHelp">
+                        <label for="exampleInputrecipient" class="form-label">收件人名稱</label>
+                        <input type="text" class="recipientName form-control p-0 rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1" placeholder="請輸入姓名" name="收件人名稱" id="exampleInputrecipient" aria-describedby="emailHelp">
+                        <p class="orderInfo-message text-danger" data-message="收件人名稱"></p>
                       </div>
                       <div class="mb-3 fw-bold">
-                        <label for="exampleInputAddres">收件人電話:</label>
-                        <input type="Phone" class="recipientPhone form-control" id="exampleInputPhone">
+                        <label for="exampleInputAddres">收件人電話</label>
+                        <input type="text" class="recipientPhone form-control p-0 rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1" placeholder="請輸入電話" name="收件人電話" id="exampleInputPhone">
+                        <p class="orderInfo-message text-danger" data-message="收件人電話"></p>
                       </div>
                       <div class="mb-3 fw-bold">
                           <label for="exampleInputMymail" class="form-label">E-mail</label>
-                          <input type="Mail" class="recipientMail form-control" id="exampleInputMymail">
+                          <input type="text" class="recipientMail form-control p-0 rounded-0  border-top-0 border-end-0 border-start-0  border-grey2 border-1" placeholder="請輸入Email" name="收件人email" id="exampleInputMymail">
+                          <p class="orderInfo-message text-danger" data-message="收件人email"></p>
                       </div>
                       <div class="box d-flex justify-content-between mt-5">
                           <button type="submit" class="Previous-Btn">上一步</button>
                           <button type="submit" class="recipient Next-Btn">下一步</button>
                       </div>
-                 </div>
-                 <div class="form-step">
+                </div>
+                <div class="form-step">
                     <div class="mb-3 fw-bold">
-                    <label  for="date">請輸入派車日期:</label>
-                            <input type="date" class="deliveryDate"  id="start" name="trip-start" value="2022" min="2022" max="2030">
+                        <label  for="date">請輸入派車日期:</label>
+                        <input type="date" class="deliveryDate"  id="start" name="日期" value="2022" min="2022" max="2030">
+                        <p class="orderInfo-message text-danger" data-message="日期"></p>
                     </div>
                     <div class="mb-3 fw-bold">
                         <label  for="date">請輸入派車時間:</label>
-                        <input type="time" class="deliveryTime"> 
+                        <input type="time" class="deliveryTime" name="時間"> 
+                        <p class="orderInfo-message text-danger" data-message="時間"></p>
                     </div>
                     <div class="mb-3 fw-bold">
-                        <label for="pickupArea">請輸入取貨地址:</label>
-                        <select id="pickupArea" class="form-select" aria-label="Default select example">
-                            <option selected>市區</option>
+                        <label id="pickupArea">請輸入取貨地址:</label>
+                        <select id="pickupArea"  class="form-select" aria-label="Default select example"  name="取貨地區">
+                            <option value="" selected disabled>市區</option>
                             <option value="臺北市">臺北市</option>
                             <option value="新北市">新北市</option>
                             <option value="桃園市">桃園市</option>
@@ -118,12 +125,17 @@
                             <option value="臺東縣">臺東縣</option>
                             <option value="澎湖縣">澎湖縣</option>
                         </select>
-                        <input type="text" class="pickupAddres form-control mt-3" id="exampleInputAddres" placeholder="地址">
+                        <p class="orderInfo-message text-danger" data-message="取貨地區"></p>
+                    </div>
+
+                    <div class="mb-3 fw-bold">
+                      <input type="text" class="pickupAddres form-control mt-3" name="取貨地址" id="exampleInputAddres" placeholder="地址">
+                      <p class="orderInfo-message text-danger" data-message="取貨地址"></p>
                     </div>
                     <div class="mb-3 fw-bold">
                         <label for="sendArea">請輸入送達地址:</label>
-                        <select id="sendArea" class="form-select" aria-label="Default select example">
-                            <option selected>市區</option>
+                        <select id="sendArea"   class="form-select  required"  name="送達地區">
+                            <option value="" selected disabled>市區</option>
                             <option value="臺北市">臺北市</option>
                             <option value="新北市">新北市</option>
                             <option value="桃園市">桃園市</option>
@@ -142,74 +154,27 @@
                             <option value="臺東縣">臺東縣</option>
                             <option value="澎湖縣">澎湖縣</option>
                         </select>
-                        <input type="text" class="sendAddres form-control mt-3" id="exampleInputAddres" placeholder="地址">
+                        <p class="orderInfo-message text-danger" data-message="送達地區"></p>
+                    </div>
+                    <div class="mb-3 fw-bold">
+                      <input type="text" class="sendAddres form-control mt-3" id="exampleInputAddres" placeholder="地址" name="送達地址">
+                      <p class="orderInfo-message text-danger" data-message="送達地址"></p>
                     </div>
                       <div class="box d-flex justify-content-between">
                           <button type="submit" class="Previous-Btn">上一步</button>
                           <button type="submit" class="sendout-Btn">完成</button>
                       </div>
-                 </div>
-            </form>
+                </div>  
+            </div>   
+    </form>
            
     </div>
     <script src="js/config.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.12.0/validate.min.js"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
    <script src="js/reservation.js"></script>
-   <script>
-    //送出訂單
-    const sendOut=document.querySelector('.sendout-Btn');
-    sendOut.addEventListener('click',e=>{
-        e.preventDefault();
-        const customerMail=document.querySelector('.customerMail').value;
-        const customerWeight=document.querySelector('.customerWeight').value;
-        const customerItems=document.querySelector('.customerItems').value;
-        const customerPhone=document.querySelector('.customerPhone').value;
-        const recipientName=document.querySelector('.recipientName').value;
-        const recipientPhone=document.querySelector('.recipientPhone').value;
-        const recipientMail=document.querySelector('.recipientMail').value;
-        const deliveryDate=document.querySelector('.deliveryDate').value;
-        const deliveryTime=document.querySelector('.deliveryTime').value;
-        const pickupArea=document.getElementById('pickupArea').value;
-        const pickupAddres=document.querySelector('.pickupAddres').value;
-        const sendArea=document.getElementById('sendArea').value;
-        const sendAddres=document.querySelector('.sendAddres').value;
-        if(customerMail===''||customerWeight===''||customerItems===''||customerPhone===''||
-           recipientName===''||recipientPhone===''||recipientMail===''||deliveryDate===''||
-           deliveryTime===''||pickupArea===''||pickupAddres===''||sendArea===''||sendAddres==='' ){
-            alert('資訊不完整請重新輸入');
-            return;
-        }
-         axios.post(`${_url}/600/shops`,{
-            "userId":id,
-            "demand":"出貨",
-            "customerName":userName,
-            "customerMail":customerMail,
-            "customerWeight":customerWeight,
-            "customerPhone":customerPhone,
-            "customerItems":customerItems,
-            "recipientName":recipientName,
-            "recipientPhone":recipientPhone,
-            "recipientMail":recipientMail,
-            "deliveryDate":deliveryDate,
-            "deliveryTime":deliveryTime,
-            "pickupArea":pickupArea,
-            "pickupAddres":pickupAddres,
-            "sendArea":sendArea,
-            "sendAddres":sendAddres
-         },{
-            headers: {
-              'Content-Type':'application/json',
-              'Authorization': 'Bearer '+token  
-               }
-
-         })
-         .then(res=>{
-            window.location.replace('http://127.0.0.1:5501/afterlogin.html');
-         })
-    })
-   </script>
 </body>
 </html>
