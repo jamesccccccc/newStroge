@@ -102,7 +102,7 @@ sendOut.addEventListener('click',e=>{
 
          })
          .then(res=>{
-            window.location.replace('http://127.0.0.1:5501/afterlogin.html');
+            window.location.replace('https://jamesccccccc.github.io/newStroge/afterlogin.html');
          })
 })
 //驗證表單
