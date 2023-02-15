@@ -41,8 +41,8 @@
                     </p>
                 <div class="input-group">
                       <i class='fas fa-search icon px-2'></i>
-                      <input type="text"class="form-control px-4  rounded-start" placeholder="預約派車、商品加工、儲位租用" value="">
-                      <button class="btn  text-white fw-bold px-1 rounded border-white" type="button">現在預約</button>
+                      <input type="text"class="search-value form-control px-4  rounded-start" placeholder="出貨、商品加工、儲位租用" value="">
+                      <button class="search-Btn  btn  text-white fw-bold px-1 rounded border-white" type="button">現在預約</button>
                 </div>
                </div>
           </div>
@@ -209,6 +209,7 @@
     <p> &copy;FUN進去版權所有©2022 FUN All Rights Reserved.</p>
     </div>
     </div>
+    <script src="js/titlehead.js"></script>
     <script src="js/config.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -217,25 +218,18 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script src="js/swiper.js"></script>
     <script>
-       let logout=document.querySelector('.logout');
-       let allstars=document.querySelectorAll('.star');
-       let sendMessage=document.querySelector('.send-message');
-       let commentList=document.querySelector(".commentList");
+       const allstars=document.querySelectorAll('.star');
+       const sendMessage=document.querySelector('.send-message');
        let commentData=[];
        let starNum=[];
-        //登出
-        logout.addEventListener('click',function(e){
-           localStorage.clear();
-           window.location.replace('http://127.0.0.1:5501/index.html');
-       })
        //渲染留言內容
         function init(){
         axios.get(`${_url}/posts`)
           .then(res=>{
                 commentData=res.data
+                let str=''
                 commentData.forEach(item=>{
                 let starTatol=item.starNum.join(" ")
-                let str=''
                 str+=`
                 <li class="d-flex my-3"> 
                   <a href="#"><img class="rounded-pill"  src="https://ui-avatars.com/api/?name=${item.userName}&background=random&color=fff" width="32px" height="32px">
@@ -249,11 +243,12 @@
                  </div>
            </li>    
                 `
-                commentList.innerHTML+=str
               })
+              const commentList=document.querySelector(".commentList");
+              commentList.innerHTML=str
             })
           .catch(err=>{
-                console.log(err)
+               
             })
       }
         init();
@@ -275,6 +270,7 @@
        })  
        //發送留言
         sendMessage.addEventListener('click',function(e){
+          e.preventDefault();
           let message=document.querySelector('.user-Message').value;
           axios.post(`${_url}/600/posts`,{
             "content":message,
@@ -288,14 +284,22 @@
               },      
             })
             .then(res=>{
-            console.log(res)
+               init();
             })
             .catch(err=>{
-            console.log(err)
+           
             })
           })
+       //搜尋欄位
+       const seacrhBtn=document.querySelector('.search-Btn');
+       seacrhBtn.addEventListener('click',e=>{
+          e.preventDefault();
+          const seacrhValue=document.querySelector('.search-value').value;
+          if(seacrhValue === "出貨"||seacrhValue === "商品加工"||seacrhValue ==="儲位租用"){
+            window.location.replace('http://127.0.0.1:5501/consult.html');
+          }return;
       
-      
+       })
     </script>
 </body>
 </html>

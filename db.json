@@ -17,32 +17,53 @@
       "password": "$2a$10$0enEvPJxa2JDpa2gM7xuTO2Sht./M3Y5BHv68G6PoNg1dIlzbkDk6",
       "myname": "james",
       "id": 3
+    },
+    {
+      "email": "a455398@gmail.com",
+      "password": "$2a$10$mMlh7VoFnVZCF/dxnmaQF.QRbR7YNOKDCzVifERH5WDVrztv91pO.",
+      "myname": "zed",
+      "id": 4
+    },
+    {
+      "email": "z455398@gmail.com",
+      "password": "$2a$10$65zLLrzEc4YoiJbCSI7lbOPYAVkCFF2MSiIR3n4Sy0UtgOA6A5tNG",
+      "myname": "zod",
+      "id": 5
+    },
+    {
+      "email": "x455398@gmail.com",
+      "password": "$2a$10$rSsd7SIZg9oEtMt.OinSj..RTc7s9lBvAu1g0XhIFxl5S3Nx3yN5u",
+      "myname": "famer",
+      "id": 6
+    },
+    {
+      "email": "paul3345678@gmail.com",
+      "password": "$2a$10$pFfSQJ3E2e1pEIRBxyUrWuQWZ4AuK/xWfgCYE7JNORozg8NYEdSZ6",
+      "myname": "paul",
+      "id": 7
+    },
+    {
+      "email": "zczxc455398@gmail.com",
+      "password": "$2a$10$oo/bqRHG6jteRoEVw5glMOIb8i1mP74QoKIKgfPf98RJcgMRLTNxG",
+      "myname": "zod",
+      "id": 8
+    },
+    {
+      "email": "udud463@gmail.com",
+      "password": "$2a$10$s6uohxyDg3gMqskO85NlLetCtYg3vu/IJgoKMhv3zPGSSvaMZNeei",
+      "myname": "asaaasd",
+      "id": 9
     }
   ],
   "posts": [
     {
-      "content": "太贊了",
+      "content": "",
       "userId": "1",
       "userName": "james",
       "starNum": [
-        "&#9733",
-        "&#9733",
-        "&#9733",
-        "&#9733",
         "&#9733"
       ],
       "id": 1
-    },
-    {
-      "content": "還行啦",
-      "userId": "1",
-      "userName": "james",
-      "starNum": [
-        "&#9733",
-        "&#9733",
-        "&#9733"
-      ],
-      "id": 2
     },
     {
       "content": "",
@@ -55,65 +76,10 @@
         "&#9733",
         "&#9733"
       ],
-      "id": 3
+      "id": 2
     }
   ],
   "shops": [
-    {
-      "userId": "1",
-      "demand": "出貨",
-      "customerName": "james",
-      "customerMail": "gyt455398@gmail.com",
-      "customerWeight": "50KG",
-      "customerPhone": "0982709433",
-      "customerItems": "3C零件",
-      "recipientName": "PChome",
-      "recipientPhone": "02 2326 1460",
-      "recipientMail": "google1234@gmail.com",
-      "deliveryDate": "2023-01-31",
-      "deliveryTime": "18:27",
-      "pickupArea": "桃園市",
-      "pickupAddres": "中壢區中山北路246號",
-      "sendArea": "臺北市",
-      "sendAddres": "大安區",
-      "id": 1
-    },
-    {
-      "customerName": "james",
-      "userId": "1",
-      "demand": "倉儲服務",
-      "work": [
-        "盤點"
-      ],
-      "commerce": [
-        "B2B"
-      ],
-      "specaial": "請幫我打包",
-      "deliveryDate": "2023-02-01",
-      "deliveryTime": "19:28",
-      "area": "臺北市",
-      "addres": "大安區",
-      "id": 2
-    },
-    {
-      "customerName": "james",
-      "userId": "1",
-      "demand": "倉儲服務",
-      "work": [
-        "盤點",
-        "商品分裝"
-      ],
-      "commerce": [
-        "B2B",
-        "B2C"
-      ],
-      "specaial": "",
-      "deliveryDate": "2023-02-02",
-      "deliveryTime": "19:28",
-      "area": "桃園市",
-      "addres": "中壢區",
-      "id": 3
-    },
     {
       "customerName": "judy",
       "userId": "2",
@@ -128,6 +94,43 @@
       "area": "臺北市",
       "addres": "大安區",
       "id": 4
+    },
+    {
+      "customerName": "james",
+      "userId": "1",
+      "demand": "倉儲服務",
+      "work": [
+        "全部服務",
+        "盤點",
+        "貼標",
+        "包貨",
+        "揀貨",
+        "商品分裝"
+      ],
+      "commerce": [
+        "B2B"
+      ],
+      "specaial": "請幫我打包",
+      "deliveryDate": "2023-02-08",
+      "deliveryTime": "02:26",
+      "area": "桃園市",
+      "addres": "中壢區成功路79巷20弄14-2號2樓",
+      "id": 5
+    },
+    {
+      "customerName": "james",
+      "userId": "1",
+      "demand": "儲位租用",
+      "work": [
+        "空間不夠"
+      ],
+      "pingNum": "20坪",
+      "place": "3天",
+      "deliveryDate": "2023-02-08",
+      "deliveryTime": "02:27",
+      "area": "臺中市",
+      "addres": "北屯區",
+      "id": 6
     }
   ]
 }

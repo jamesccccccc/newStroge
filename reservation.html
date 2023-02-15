@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse">
               <ul class="navbar-nav   me-3 mb-lg-0 align-items-center">
                 <li><a href="afterlogin.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">首頁</a></li>
-                <li><a href="reservation.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">預約派車</a></li>
+                <li><a href="consult.html" class="nav-link px-md-3 fs-5 fw-bold btn-hover">預約派車</a></li>
                 <li><a href="#" class="logout fw-bold nav-link btn-hover  ms-2">登出</a></li>
                 <li><a href="order.html" class="nav-link px-md-3 fs-5 fw-bold  btn-hover"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li class="userHead ms-3"></li>
@@ -29,7 +29,7 @@
             </nav>
          </div>
        </div>
-      </div>
+    </div>
     <form class="order-content bg-primary2 d-flex flex-column align-items-center justify-content-center">
             <div class="bg-white order">
                 <div class="title"><h1 class="fs-3 fw-bold mb-5">請輸入託運資訊</h1></div>
@@ -104,8 +104,8 @@
                         <p class="orderInfo-message text-danger" data-message="時間"></p>
                     </div>
                     <div class="mb-3 fw-bold">
-                        <label id="pickupArea">請輸入取貨地址:</label>
-                        <select id="pickupArea"  class="form-select" aria-label="Default select example"  name="取貨地區">
+                        <label for="pickupArea">請輸入取貨地址:</label>
+                        <select id="pickupArea" class="form-select" aria-label="Default select example"  name="取貨地區">
                             <option value="" selected disabled>市區</option>
                             <option value="臺北市">臺北市</option>
                             <option value="新北市">新北市</option>
@@ -167,14 +167,14 @@
                 </div>  
             </div>   
     </form>
-           
-    </div>
+    <script src="js/titlehead.js"></script>
     <script src="js/config.js"></script>
+    <script src="js/reservation.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.12.0/validate.min.js"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-   <script src="js/reservation.js"></script>
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
 </body>
 </html>

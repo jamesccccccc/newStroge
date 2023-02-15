@@ -74,15 +74,15 @@
         </div>
       </div>
     </div>
-
+   
     <!--頁尾-->
+    <script src="js/titlehead.js"></script>
     <script src="js/config.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/790635f1cd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script>
-        
         const order=document.querySelector('.order-list');
         const seletallBtn=document.getElementById('selectAll');
         const deleteBtn=document.querySelector('.deleteAll-Btn');
@@ -124,6 +124,7 @@
         init();
         //全選
         seletallBtn.addEventListener('click',e=>{
+          e.preventDefault();
           if(seletallBtn.checked === true){
               let selectList=document.querySelectorAll('.select-Num');
               selectList.forEach((item,i)=>{
@@ -146,6 +147,7 @@
         })
         //刪除訂單
         deleteBtn.addEventListener('click',e=>{
+            e.preventDefault();
             let seletallBtn=document.getElementById('selectAll');
             let selectAll=document.querySelectorAll('.select-Num');
             //刪除全部訂單
@@ -165,7 +167,7 @@
                 if(item.checked===true){
                   axios.delete(`${_url}/shops/${item.id}`)
                   .then(res=>{
-                     alert('刪除成功')
+                     init();
                   })
                   .catch(err=>{
                      alert('請選擇要刪除的項目')
@@ -179,8 +181,8 @@
           axios.get(`${_url}/shops`)
           .then(res=>{
             let orderData=res.data;
+            let str=''
             orderData.forEach((item,i)=>{
-                let str=''
                 if(item.customerName!==userName){
                    return;
                 }
@@ -227,7 +229,7 @@
                   </ul>
                   `
                   const orderList=document.querySelector('.user-Demand');
-                  orderList.innerHTML+=str;
+                  orderList.innerHTML=str;
                 }
                 if(item.demand==="倉儲服務"){
                   str+=`
@@ -257,7 +259,7 @@
                       </ul>
                   `
                   const orderList=document.querySelector('.user-Demand');
-                  orderList.innerHTML+=str;
+                  orderList.innerHTML=str;
                 }
                 if(item.demand==="儲位租用"){
                     console.log(item);
@@ -288,13 +290,14 @@
                       </ul>
                     `
                     const orderList=document.querySelector('.user-Demand');
-                    orderList.innerHTML+=str;
+                    orderList.innerHTML=str;
+
                 }
             })
           })
-        
         }
         orderBtn.addEventListener('click',e=>{
+          e.preventDefault();
           let exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
           renderOrder();
           exampleModal.show();

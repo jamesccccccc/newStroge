@@ -34,26 +34,22 @@
         <h1>註冊</h1>
         <form>
           <div class="mb-1">
-            <label for="exampleInputName" class="form-label">姓名</label>
-            <input type="Name" class="form-name form-control" id="exampleInputName" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text"></div>
+            <label for="Name" class="form-label"><span class="fw-bold">姓名</span></label>
+            <input type="text" class="form-name form-control" id="Name" aria-describedby="emailHelp">
+            <p class="orderInfo-message fw-bold text-danger" data-message="Name"></p>
           </div>
           <div class="mb-1">
-            <label for="exampleInputEmail1" class="form-label">電子郵件</label>
-            <input type="email" class="form-email form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text"></div>
+            <label for="Email" class="form-label"><span class="fw-bold">電子郵件</span></label>
+            <input type="text" class="form-email form-control" id="Email" aria-describedby="emailHelp">
+            <p class="orderInfo-message fw-bold text-danger" data-message="Email"></p>
           </div>
           <div class="mb-1">
-            <label for="exampleInputPassword1" class="form-label">密碼</label>
-            <input type="password" class="form-password form-control" id="exampleInputPassword1">
+            <label for="password" class="form-label"><span class="fw-bold">密碼</span></label>
+            <input type="password" class="form-password form-control" aria-describedby="emailHelp"  autocomplete/> 
+            <p class="orderInfo-message fw-bold text-danger" data-message="Password"></p>            
           </div>
-          <div class="mb-1 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">記住我</label>
-            
-          </div>
-          <div class="send d-flex justify-content-center">
-               <button type="button" class="register btn px-6"><a href="#" class="link-white">送出</a></button>
+          <div class="send d-flex justify-content-center py-3">
+               <button type="button" class="register btn px-6"><a href="#" class="link-white fw-bold">送出</a></button>
           </div>
         </form>
     </div>
@@ -107,9 +103,9 @@
          //註冊功能
          let registerBtn=document.querySelector('.register');
          registerBtn.addEventListener('click',function(e){
-              let myName=document.querySelector('.form-name').value;
-              let myMail=document.querySelector('.form-email').value;
-              let myPassword=document.querySelector('.form-password').value;
+              const myName=document.querySelector('.form-name').value;
+              const myMail=document.querySelector('.form-email').value;
+              const myPassword=document.querySelector('.form-password').value;
               if(document.querySelector('.form-name').value==""||
                  document.querySelector('.form-email').value==""||
                  document.querySelector('.form-password').value=="")
@@ -117,8 +113,8 @@
                  alert('請輸入會員資料');
                  return;
                 }
-              
-              singup(myName,myMail,myPassword)
+                //驗證註冊
+                singup(myName,myMail,myPassword)
          })
          function singup(myName,myMail,myPassword){
               axios.post(`${_url}/signup`,{
@@ -126,10 +122,80 @@
                  "email":myMail,
                  "password":myPassword
               })
-              .then(response=>{
+              .then(res=>{
+                  console.log(res);
                   window.location.replace('http://127.0.0.1:5501/login.html');
               })
+              .catch(err=>{
+                  console.log(err)
+                  if(err.response.data === "Email already exists"){
+                    document.querySelector(`[data-message=Email]`).textContent=`此信箱已經有人使用過了`
+                    return;
+                  }
+                  if(err.response.data === "Email format is invalid"){
+                    document.querySelector(`[data-message=Email]`).textContent=`無效的電子信箱`
+                    return;
+                  }
+              })
          }
+         //驗證註冊 
+         function verifyRegister(){
+            const myName=document.querySelector('.form-name');
+            myName.addEventListener("blur",e=>{
+            if(validateName(myName.value)==false){
+              document.querySelector(`[data-message=Name]`).textContent=`請輸入英文姓名`
+              return;
+            }else{
+              document.querySelector(`[data-message=Name]`).textContent=""
+            }
+            })
+            //驗證信箱
+            const myMail=document.querySelector('.form-email');
+            myMail.addEventListener("blur",e=>{
+                if(validateEmail(myMail.value)==false){
+                  document.querySelector(`[data-message=Email]`).textContent=`請輸入正確的電子信箱`
+                  return;
+                }else{
+                  document.querySelector(`[data-message=Email]`).textContent=""
+                }
+            })
+            //驗證密碼
+            const myPassword=document.querySelector('.form-password');
+            myPassword.addEventListener("blur",e=>{
+              if(validatePassword(myPassword.value)==false){
+                  document.querySelector(`[data-message=Password]`).textContent=`密碼至少包含字母,數字,至少8~12位`
+                  return;
+                }else{
+                  document.querySelector(`[data-message=Password]`).textContent=""
+                }
+            })
+          
+         }   
+         //名稱規則
+         function validateName(name){
+            const regexName=/^(?=.*[a-z])/;
+            if(regexName.test(name)){
+              return true
+            }
+              return false
+          }
+         //信箱規則
+         function validateEmail(mail){
+            const regexMail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+            if (regexMail.test(mail)){
+                return true
+            }         
+                return false
+          }
+         //密碼規則
+         function validatePassword(password){
+          const regexPassword=/^(?=.*[a-z])(?=.*\d)[a-z\d]{8,12}$/
+          if(regexPassword.test(password)){
+               return true
+          }
+               return false
+         }
+         verifyRegister();
     </script>
 </body>
 </html>

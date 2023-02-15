@@ -196,7 +196,6 @@ const constraints={
        
 }      
 inputs.forEach(item=>{
-   console.log(item);
          item.addEventListener('change',function(){
              item.nextElementSibling.textContent= "";
              let errors=validate(form, constraints);

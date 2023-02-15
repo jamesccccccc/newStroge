@@ -34,24 +34,24 @@
         <h1>登入</h1>
         <form>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">電子郵件</label>
-            <input type="email" class="login-mail form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="exampleInputEmail1" class="form-label"><span class="fw-bold">電子郵件</span></label>
+            <input type="email" class="login-mail form-control" id="exampleInputEmail" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text"></div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">密碼</label>
+            <label for="exampleInputPassword1" class="form-label"><span class="fw-bold">密碼</span></label>
             <input  autocomplete="off" type="password" class="login-password form-control" id="exampleInputPassword1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text"></div>
           </div>
           <div class="mb-3 form-check position-relative">
             <div class="position-absolute start-0">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1"><span class="ms-2 fw-bold">記住我</span></label>
+              <input type="checkbox" class="form-check-input " id="record">
+              <label class="form-check-label" for="record"><span class="ms-2 fw-bold">記住我</span></label>
             </div>
           </div>
           <div class="send d-flex justify-content-between">
-            <button type="button" class="login-btn btn text-white ">送出</button>
-            <a href="register.html" class="register btn text-white ">註冊帳號</a>
+            <button type="button" class="login-btn btn text-white fw-bold">送出</button>
+            <a href="register.html" class="register btn text-white fw-bold">註冊帳號</a>
           </div>
         </form>
         </div>
@@ -92,8 +92,7 @@
       </div>
        <div class="copy">
          <p> &copy;FUN進去版權所有©2022 FUN All Rights Reserved.</p>
-       </div>
-       
+       </div>     
     </div>
     </div>
     <script src="js/config.js"></script>
@@ -102,9 +101,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     <script>
-        let login=document.querySelector('.login-btn');
+        //記住電子信箱
+        const remeberMail=document.querySelector('.login-mail');
+        const record=document.querySelector('#record');
+        record.addEventListener('change',e=>{
+            e.preventDefault();
+            if(record.checked){
+               localStorage.setItem('email',remeberMail.value);
+            }else{
+              localStorage.removeItem('email');
+            }
+        })
+        if(localStorage.getItem('email')){
+          remeberMail.value=(localStorage.getItem('email'));
+          record.checked=true
+        } 
         //登入功能
+        const login=document.querySelector('.login-btn')
         login.addEventListener('click',function(e){
+            e.preventDefault();
             let loginMail=document.querySelector(".login-mail").value
             let loginPassword=document.querySelector(".login-password").value
             if(loginMail===""||loginPassword===""){
@@ -126,7 +141,11 @@
             })
             .catch(error=>{
                 alert('電子郵件和密碼錯誤請重新輸入');
+                document.querySelector(".login-mail").value="";
+                document.querySelector(".login-password").value="";
+                return;
             })
+
         }
         //取得使用者姓名
         let nameData=[]
@@ -137,7 +156,6 @@
                nameData.forEach(item=>{
                   if(item.email==loginMail){
                       localStorage.setItem('myname',item.myname);
-                      console.log(localStorage.getItem('myname'))
                   }
                })
             })
