@@ -223,7 +223,7 @@
        let commentData=[];
        let starNum=[];
        //渲染留言內容
-        function init(){
+       function init(){
         axios.get(`${_url}/posts`)
           .then(res=>{
                 commentData=res.data
@@ -253,7 +253,7 @@
       }
         init();
        //留言星星
-        allstars.forEach((item,i)=>{
+       allstars.forEach((item,i)=>{
           item.addEventListener('click',function(e){
             allstars.forEach((item,j)=>{
                  if(i>=j){
@@ -269,7 +269,7 @@
           })
        })  
        //發送留言
-        sendMessage.addEventListener('click',function(e){
+       sendMessage.addEventListener('click',function(e){
           e.preventDefault();
           let message=document.querySelector('.user-Message').value;
           axios.post(`${_url}/600/posts`,{
@@ -296,9 +296,8 @@
           e.preventDefault();
           const seacrhValue=document.querySelector('.search-value').value;
           if(seacrhValue === "出貨"||seacrhValue === "商品加工"||seacrhValue ==="儲位租用"){
-            window.location.replace('http://127.0.0.1:5501/consult.html');
+            window.location.replace('https://jamesccccccc.github.io/storage/consult.html');
           }return;
-      
        })
     </script>
 </body>

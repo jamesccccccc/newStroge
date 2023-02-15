@@ -17,5 +17,5 @@ logout.addEventListener('click',function(e){
         localStorage.removeItem('myname');
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
-        window.location.replace('http://127.0.0.1:5501/index.html');
+        window.location.replace('https://jamesccccccc.github.io/storage/index.html');
     })
