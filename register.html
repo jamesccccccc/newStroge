@@ -123,9 +123,11 @@
                  "password":myPassword
               })
               .then(res=>{
-                  window.location.replace('https://jamesccccccc.github.io/storage/login.html');
+                  console.log(res);
+                  window.location.replace('https://jamesccccccc.github.io/newStroge/login.html');
               })
               .catch(err=>{
+                  console.log(err)
                   if(err.response.data === "Email already exists"){
                     document.querySelector(`[data-message=Email]`).textContent=`此信箱已經有人使用過了`
                     return;

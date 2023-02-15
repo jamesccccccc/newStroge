@@ -77,6 +77,15 @@
         "&#9733"
       ],
       "id": 2
+    },
+    {
+      "content": "",
+      "userId": "1",
+      "userName": "james",
+      "starNum": [
+        "&#9733"
+      ],
+      "id": 3
     }
   ],
   "shops": [
@@ -94,43 +103,6 @@
       "area": "臺北市",
       "addres": "大安區",
       "id": 4
-    },
-    {
-      "customerName": "james",
-      "userId": "1",
-      "demand": "倉儲服務",
-      "work": [
-        "全部服務",
-        "盤點",
-        "貼標",
-        "包貨",
-        "揀貨",
-        "商品分裝"
-      ],
-      "commerce": [
-        "B2B"
-      ],
-      "specaial": "請幫我打包",
-      "deliveryDate": "2023-02-08",
-      "deliveryTime": "02:26",
-      "area": "桃園市",
-      "addres": "中壢區成功路79巷20弄14-2號2樓",
-      "id": 5
-    },
-    {
-      "customerName": "james",
-      "userId": "1",
-      "demand": "儲位租用",
-      "work": [
-        "空間不夠"
-      ],
-      "pingNum": "20坪",
-      "place": "3天",
-      "deliveryDate": "2023-02-08",
-      "deliveryTime": "02:27",
-      "area": "臺中市",
-      "addres": "北屯區",
-      "id": 6
     }
   ]
 }

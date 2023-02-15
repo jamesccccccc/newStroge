@@ -1,5 +1,5 @@
 //使用者頭像
-/*let userHead=document.querySelector('.navbar-nav>.userHead');
+let userHead=document.querySelector('.navbar-nav>.userHead');
 function addUser(){
     let myname=localStorage.getItem('myname');
     let str=''
@@ -10,7 +10,6 @@ function addUser(){
           userHead.innerHTML=str;
 }
 addUser();
-*/
  //登出
 let logout=document.querySelector('.logout');
 logout.addEventListener('click',function(e){
@@ -18,5 +17,5 @@ logout.addEventListener('click',function(e){
         localStorage.removeItem('myname');
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
-        window.location.replace('https://jamesccccccc.github.io/storage/index.html');
+        window.location.replace('http://127.0.0.1:5501/index.html');
     })
