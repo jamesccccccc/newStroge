@@ -168,7 +168,6 @@
                   axios.delete(`${_url}/shops/${item.id}`)
                   .then(res=>{
                      alert('已刪除');
-                     init();
                   })
                   .catch(err=>{
                      alert('請選擇要刪除的項目')
