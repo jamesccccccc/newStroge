@@ -65,6 +65,7 @@ let starNum=[];
      })
      .then(res=>{
         init();
+        window.location.replace('https://jamesccccccc.github.io/newStroge/afterlogin.html');
      })
      .catch(err=>{
        
