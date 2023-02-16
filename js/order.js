@@ -1,16 +1,18 @@
-const order=document.querySelector('.order-list');
 const seletallBtn=document.getElementById('selectAll');
 const deleteBtn=document.querySelector('.deleteAll-Btn');
 const orderBtn=document.querySelector('.check-order');
 const closeBtn=document.querySelector('.btn-close');
 let orderData=[]
 //渲染訂單內容
-function render(){
+function init(){
+  axios.get(`${_url}/shops`)
+  .then(res=>{
+  orderData=res.data
+  let str=''
   orderData.forEach((item,index)=>{
     if(item.userId!==id){
        return;
     }
-    let str=''
     str+=`
     <tr>
         <th scope="col">
@@ -26,15 +28,11 @@ function render(){
     
       </tr>
     `
-    order.innerHTML+=str
+    
   })
-}
-function init(){
-  axios.get(`${_url}/shops`)
-  .then(res=>{
-  orderData=res.data
-  render();
-})
+  const order=document.querySelector('.order-list');
+  order.innerHTML=str;
+  })
 }
 init();
 //全選
@@ -75,6 +73,7 @@ deleteBtn.addEventListener('click',e=>{
        })
        .then(res=>{
           console.log(res);
+          init();
        })
     }
     ////刪除單筆訂單
@@ -82,7 +81,7 @@ deleteBtn.addEventListener('click',e=>{
         if(item.checked===true){
           axios.delete(`${_url}/shops/${item.id}`)
           .then(res=>{
-             alert('已刪除');
+             init();
           })
           .catch(err=>{
              alert('請選擇要刪除的項目')
