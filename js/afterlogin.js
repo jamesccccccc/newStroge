@@ -40,10 +40,10 @@ let starNum=[];
              item.innerHTML='&#9733';
              let star=item.innerHTML='&#9733';
              starNum.push(star);
+             init();
           }else{
              item.innerHTML="&#9734";         
           }
-          
      })
    
    })

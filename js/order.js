@@ -1,4 +1,4 @@
-const seletallBtn=document.getElementById('selectAll');
+const seletallBtn=document.getElementById('#selectAll');
 const deleteBtn=document.querySelector('.deleteAll-Btn');
 const orderBtn=document.querySelector('.check-order');
 const closeBtn=document.querySelector('.btn-close');
@@ -72,7 +72,6 @@ deleteBtn.addEventListener('click',e=>{
        }
        })
        .then(res=>{
-          console.log(res);
           init();
        })
     }
