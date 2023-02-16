@@ -1,4 +1,4 @@
-const seletallBtn=document.getElementById('#selectAll');
+const seletallBtn=document.getElementById('selectAll');
 const deleteBtn=document.querySelector('.deleteAll-Btn');
 const orderBtn=document.querySelector('.check-order');
 const closeBtn=document.querySelector('.btn-close');
@@ -37,7 +37,6 @@ function init(){
 init();
 //全選
 seletallBtn.addEventListener('click',e=>{
-  e.preventDefault();
   if(seletallBtn.checked === true){
       let selectList=document.querySelectorAll('.select-Num');
       selectList.forEach((item,i)=>{
